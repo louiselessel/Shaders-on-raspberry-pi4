@@ -13,8 +13,9 @@ ZPLANE = 1000
 S_RES_W = 200
 S_RES_H = 200
 
-## EITHER Set size of window
+#-----------------------
 
+## EITHER Set size of window
 WIDTH = 200
 HEIGHT = 200
 
@@ -32,7 +33,8 @@ WIDTH, HEIGHT = DISPLAY.width, DISPLAY.height
 
 #shader = pi3d.Shader("shaders/test") # the most rudamentary shader - red color
 #shader = pi3d.Shader("shaders/filter_toon") # one of the pi3D shaders, using tex input
-shader = pi3d.Shader("shaders/test_shadertoy")
+shader = pi3d.Shader("shaders/test2_shadertoy")
+#shader = pi3d.Shader("shaders/TD_shadertoy")
 
 
 
