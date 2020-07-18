@@ -1,15 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
 // Pi variables
 	//#version 330
  	#ifdef GL_ES
@@ -44,6 +32,28 @@
 //#define ANIM true        // true/false
 //#define PI 3.14159
 
+
+
+
+// ------- Put in like this instead to make global variables...
+// ------- But the issue then is that the assignment can only happen in the main()!!!! 
+
+
+	//vec3      iResolution;           // viewport resolution (in pixels)
+	//float     iTime;                 // shader playback time (in seconds)
+	//vec4      iMouse;                // mouse pixel coords. xy: current (if MLB down), zw: click
+
+	vec3 iResolution = vec3(unif[16][1],unif[16][2],0.0);
+	float iTime = unif[16][0];
+	vec4 iMouse = vec4(0.5,0.5,0.0,0.0);
+	
+
+	float DENS = 3.0;          // tau.rho at the center
+	float rad = 0.9;     	 // sphere radius
+	bool ANIM = true;        // true/false
+	float PI = 3.14159;
+	
+	
 vec3 skyColor = vec3(.7,.8,1.);
 vec3 sunColor = vec3(1.,.9,.7);   // Energy 
 
@@ -100,7 +110,6 @@ vec3 perturb3(vec3 p, float scaleX, float scaleI)
 // Approximation of the real function, computed with Maple
 vec3  sphericalTransmittanceGradient(vec2 L, float r, float h, float z)
 {
-	float DENS  = 3.0;          // tau.rho at the center
 	float Lx=L.x;
 	float Ly=L.y;
 	float Y = (r -h);
@@ -167,6 +176,7 @@ float computeMeanDensRay(float y, float z, float r)
 	return DENS*(-(2./3.)*pow(xmax,3.)/(rad*rad)+2.*xmax-(2.*(y*y+z*z))*xmax/(rad*rad));
 }
 
+
 // Projection of the 3D problem into a 2D geometry
 vec3 computeEnlighting( in vec3 cameraPos, in vec3 cameraDir, in vec3 lightDir ) {
 
@@ -220,13 +230,10 @@ vec3 computeEnlighting( in vec3 cameraPos, in vec3 cameraDir, in vec3 lightDir )
 void main()
 
 {
-	float iTime = unif[16][0];
-	vec2 iResolution = vec2(unif[16][1],unif[16][2]);
-	vec2 iMouse = vec2(0.5,0.5);
-	float DENS  = 3.0;          // tau.rho at the center
-	float rad = 0.9;     	 // sphere radius
-	bool ANIM = true;        // true/false
-	float PI = 3.14159;
+	// -------- Assign in that weird way calling the locations...
+	iTime = unif[16][0];
+	iResolution = vec3(unif[16][1],unif[16][2],0.0);
+	iMouse = vec4(0.5,0.5,0.0,0.0);
 
     //camera
     vec3 cameraPos = vec3(0.0,0.0,2.0);      
@@ -250,7 +257,7 @@ void main()
     vec3 lightDir =vec3(sin(theta)*cos(phi),sin(phi),-cos(theta)*cos(phi));	
     
 	vec3 enlighting = computeEnlighting( cameraPos, cameraDir, lightDir );	
-	fragColor = vec4(enlighting,1.0);
+	gl_FragColor = vec4(enlighting,1.0);
 
 }
  

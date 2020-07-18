@@ -22,13 +22,19 @@ uniform vec3 unif[20];
 
 //uniform float t;
 
-uniform float iTime => unif[16][0];
+//uniform float iTime => unif[16][0];
+
+
+//------------------------
+
+float t = unif[16][0]; 		// ------------------ This works
 
 //------------------------
 
 //layout (location = 0) out vec4 fragColor;
 
 // ShaderToy variables
+/*
 	uniform vec3      iResolution;           // viewport resolution (in pixels)
 	//uniform float     iTime;                 // shader playback time (in seconds)
 	uniform float     iTimeDelta;            // render time (in seconds)
@@ -42,6 +48,7 @@ uniform float iTime => unif[16][0];
 	uniform sampler2D iChannel3;
 	uniform vec4      iDate;                 // (year, month, day, time in seconds)
  
+ */
 // http://www.pouet.net/prod.php?which=57245
 // If you intend to reuse this shader, please add credits to 'Danilo Guanabara'
 
@@ -51,7 +58,7 @@ uniform float iTime => unif[16][0];
 
 
 void main() {
-	float t = unif[16][0];
+	//float t = unif[16][0];
 	vec2 r;
 	r.x = unif[16][1];
 	r.y = unif[16][2];
