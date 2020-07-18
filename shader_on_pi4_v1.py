@@ -34,6 +34,7 @@ WIDTH, HEIGHT = DISPLAY.width, DISPLAY.height
 #shader = pi3d.Shader("shaders/test") # the most rudamentary shader - red color
 #shader = pi3d.Shader("shaders/filter_toon") # one of the pi3D shaders, using tex input
 shader = pi3d.Shader("shaders/test2_shadertoy")
+#shader = pi3d.Shader("shaders/test_cloud_shadertoy")
 #shader = pi3d.Shader("shaders/TD_shadertoy")
 
 
