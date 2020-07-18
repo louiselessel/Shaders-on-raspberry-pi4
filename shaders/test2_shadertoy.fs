@@ -38,7 +38,23 @@ uniform vec3 unif[20];
 //#define t iTime
 //#define r iResolution.xy
 
+// test function using now non-global variable...
+//uniform float testFloat = 0.1; 	// does not work!
+float testFloat = 0.1; 				// does work
+
+
+float aTestFunction()
+{
+	//return 0.5; // works
+	return testFloat;
+	//return iTime; // breaks code because this is now a local var inside main..
+}
+
 void main() {
+	
+	// can I get a global float?
+	float testingAFloat = aTestFunction();
+	
 	
 	// THIS WORKS
 	
@@ -57,7 +73,9 @@ void main() {
 	for(int i=0;i<3;i++) {
 		vec2 uv,p=gl_FragCoord.xy/r;
 		uv=p;
-		p-= 0.5;
+		//p-= 0.5;
+		p-= testingAFloat;
+		
 		p.x*=r.x/r.y;
 		z+=.07;
 		l=length(p);

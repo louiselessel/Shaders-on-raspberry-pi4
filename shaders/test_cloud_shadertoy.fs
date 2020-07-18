@@ -100,6 +100,7 @@ vec3 perturb3(vec3 p, float scaleX, float scaleI)
 // Approximation of the real function, computed with Maple
 vec3  sphericalTransmittanceGradient(vec2 L, float r, float h, float z)
 {
+	float DENS  = 3.0;          // tau.rho at the center
 	float Lx=L.x;
 	float Ly=L.y;
 	float Y = (r -h);
