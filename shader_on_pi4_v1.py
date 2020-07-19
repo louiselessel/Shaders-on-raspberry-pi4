@@ -16,8 +16,8 @@ S_RES_H = 200
 #-----------------------
 
 ## EITHER Set size of window
-WIDTH = 200
-HEIGHT = 200
+WIDTH = 500
+HEIGHT = 500
 
 DISPLAY = pi3d.Display.create(w=WIDTH, h=HEIGHT, background=BACKGROUND_COLOR, frames_per_second=30, 
     display_config=pi3d.DISPLAY_CONFIG_HIDE_CURSOR | pi3d.DISPLAY_CONFIG_MAXIMIZED, use_glx=True)
@@ -35,8 +35,9 @@ WIDTH, HEIGHT = DISPLAY.width, DISPLAY.height
 #shader = pi3d.Shader("shaders/filter_toon") # one of the pi3D shaders, using tex input
 #shader = pi3d.Shader("shaders/test_shadertoy")
 #shader = pi3d.Shader("shaders/test2_shadertoy")
-shader = pi3d.Shader("shaders/test_cloud_shadertoy")
+#shader = pi3d.Shader("shaders/test_cloud_shadertoy")
 #shader = pi3d.Shader("shaders/TD_shadertoy")
+shader = pi3d.Shader("shaders/paste_here")
 
 
 
@@ -56,11 +57,11 @@ while DISPLAY.loop_running():
 
   
   # count time as iterations instead
-  t += 1* 0.01
+  t += 1* 0.1
   #print(t)
   
   # set uniforms, for GLES reasons, these are set on '48'
-  sprite.set_custom_data(48, [t, S_RES_W, HEIGHT])
+  sprite.set_custom_data(48, [t, WIDTH, HEIGHT])
   
   # draw the shader on the sprite (flat rectangle)
   sprite.draw()

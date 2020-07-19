@@ -50,20 +50,22 @@ float aTestFunction()
 	//return iTime; // breaks code because this is now a local var inside main..
 }
 
+vec2 iResolution = vec2(unif[16][1],unif[16][2]);
+float iTime = unif[16][0];
+
+float t = iTime;
+vec2 r = iResolution;
+
 void main() {
 	
 	// can I get a global float?
 	float testingAFloat = aTestFunction();
 	
 	
-	// THIS WORKS
-	
-	vec2 iResolution = vec2(unif[16][1],unif[16][2]);
-	float iTime = unif[16][0];
-	
+	// THIS ÁLSO WORKS,  but better to do it outside of main
 	// The #defines don't work so I can remake them in the main()
-	float t = iTime;
-	vec2 r = iResolution;
+	//float t = iTime;
+	//vec2 r = iResolution;
 	
 	// From the original shader code
 	vec3 c;

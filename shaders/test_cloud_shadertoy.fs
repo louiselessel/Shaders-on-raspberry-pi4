@@ -36,12 +36,6 @@
 
 
 // ------- Put in like this instead to make global variables...
-// ------- But the issue then is that the assignment can only happen in the main()!!!! 
-
-
-	//vec3      iResolution;           // viewport resolution (in pixels)
-	//float     iTime;                 // shader playback time (in seconds)
-	//vec4      iMouse;                // mouse pixel coords. xy: current (if MLB down), zw: click
 
 	vec3 iResolution = vec3(unif[16][1],unif[16][2],0.0);
 	float iTime = unif[16][0];
@@ -231,9 +225,9 @@ void main()
 
 {
 	// -------- Assign in that weird way calling the locations...
-	iTime = unif[16][0];
-	iResolution = vec3(unif[16][1],unif[16][2],0.0);
-	iMouse = vec4(0.5,0.5,0.0,0.0);
+	//iTime = unif[16][0];
+	//iResolution = vec3(unif[16][1],unif[16][2],0.0);
+	//iMouse = vec4(0.5,0.5,0.0,0.0);
 
     //camera
     vec3 cameraPos = vec3(0.0,0.0,2.0);      
