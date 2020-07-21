@@ -24,9 +24,9 @@ The last line is to increase the GPU memory, this is default set to 64.
 
 
 -------------
-## ABOUT pi3D
+## ABOUT pi3d
 
-The pi3D library comes with many other examples... I'm only focusing on shaders!
+The pi3d library comes with many other examples... I'm only focusing on shaders!
 
 You can download the examples and have a look around for getting your bearings. 
 You can also start coding right away (here is a getting started tutorial https://www.youtube.com/watch?v=gXTU6x8dQJw&feature=youtu.be)
@@ -45,3 +45,12 @@ $ cd ~/pi3d_demos
 $ python3 RunTests.py
 
 Otherwise just open the nameOfFile.py in Geany and click run.
+
+-------------
+
+I did not make pi3d.
+Please support the community and authors over at https://pi3d.github.io/html/ReadMe.html#acknowledgements.
+
+> Pi3d started with code based on Peter de Rivaz ‘pyopengles’ (https://github.com/peterderivaz/pyopengles) with some tweaking from Jon Macey’s code (jonmacey.blogspot.co.uk/2012/06/).
+
+> Many Thanks, especially to Peter de Rivaz, Jon Macey, Richar Urwin, Peter Hess, David Wallin, Avishay Orpaz (avishorp), Guenter Kreidl, Benjamin Denozière, Matthew Coleman, Piotr Bednarski, @swehner and others who have contributed to pi3d - keep up the good work!
