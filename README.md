@@ -17,11 +17,15 @@ Make sure to install the pi3D library or the code will not run.
 Just doing the following worked on a Pi 4 w/ 1 Gb RAM. (Steps based on https://pi3d.github.io/html/ReadMe.html#setup-on-the-raspberry-pi)
 
 In terminal:
+
 $ sudo pip3 install pi3d
 
-$ sudo raspi-config # set gpu_mem=128 - under -> advanced options -> memory split
+$ sudo raspi-config
+
+Then set gpu_mem=128 under -> advanced options -> memory split
 
 The last line is to increase the GPU memory, this is default set to 64.
+You want to set it higher to 128.
 
 
 -------------
