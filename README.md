@@ -18,6 +18,7 @@ Just doing the following worked on a Pi 4 w/ 1 Gb RAM. (Steps based on https://p
 
 In terminal:
 $ sudo pip3 install pi3d
+
 $ sudo raspi-config # set gpu_mem=128 - under -> advanced options -> memory split
 
 The last line is to increase the GPU memory, this is default set to 64.
