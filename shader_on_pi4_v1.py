@@ -53,6 +53,7 @@ t = 0
 mykeys = pi3d.Keyboard()
 
 
+
 while DISPLAY.loop_running():
 
   
@@ -60,8 +61,14 @@ while DISPLAY.loop_running():
   t += 1* 0.1
   #print(t)
   
-  # set uniforms, for GLES reasons, these are set on '48'
+  # Set uniforms, for python reasons, these are set on '48-57' see notes in bottom
+  # I'm still researching this part.
   sprite.set_custom_data(48, [t, WIDTH, HEIGHT])
+  #sprite.set_custom_data(51, [var, var, var])
+  #sprite.set_custom_data(54, [var, var, var])
+  #sprite.set_custom_data(57, [var, var, var])
+  
+  
   
   # draw the shader on the sprite (flat rectangle)
   sprite.draw()
@@ -81,6 +88,51 @@ while DISPLAY.loop_running():
 #CAMERA = pi3d.Camera(is_3d=False)
 # do fullscreen - but include exit condition in code before implementing (https://www.programcreek.com/python/example/2557/pygame.QUIT)
 # use_pygame=True
+
+"""
+Passing in own uniforms
+
+ # uniform variables all in one array (for Shape and one for Buffer)
+    self.unif =  (ctypes.c_float * 60)(
+      x, y, z, rx, ry, rz,
+      sx, sy, sz, cx, cy, cz,
+      0.5, 0.5, 0.5, 5000.0, 0.8, 1.0,
+      0.0, 0.0, 0.0, light.is_point, 0.0, 0.0,
+      light.lightpos[0], light.lightpos[1], light.lightpos[2],
+      light.lightcol[0], light.lightcol[1], light.lightcol[2],
+      light.lightamb[0], light.lightamb[1], light.lightamb[2],
+      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+"""
+""" pass to shader array of vec3 uniform variables:
+    ===== ========================================== ==== ==
+    vec3  description                                python
+    ----- ------------------------------------------ -------
+    index                                            from to
+    ===== ========================================== ==== ==
+       0  location                                     0   2
+       1  rotation                                     3   5
+       2  scale                                        6   8
+       3  offset                                       9  11
+       4  fog shade                                   12  14
+       5  fog distance, fog alpha, shape alpha        15  17
+       6  camera position                             18  20
+       7  point light if 1: light0, light1, unused    21  23
+       8  light0 position, direction vector           24  26
+       9  light0 strength per shade                   27  29
+      10  light0 ambient values                       30  32
+      11  light1 position, direction vector           33  35
+      12  light1 strength per shade                   36  38
+      13  light1 ambient values                       39  41
+      14  defocus dist_from, dist_to, amount          42  44 # also 2D x, y
+      15  defocus frame width, height (only 2 used)   45  46 # also 2D w, h, tot_ht
+      16  custom data space                           48  50 <---- We can pass uniforms from 48-59
+      17  custom data space                           51  53 <- We fetch them in the shader as 16-19
+      18  custom data space                           54  56
+      19  custom data space                           57  59
+    ===== ========================================== ==== ==
+"""
 
 
 ## Other resizing tests for when using image input - scaling of image isnt correct yet
