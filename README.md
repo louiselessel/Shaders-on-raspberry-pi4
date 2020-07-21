@@ -18,7 +18,7 @@ Just doing the following worked on a Pi 4 w/ 1 Gb RAM. which was running the new
 
 Steps based on https://pi3d.github.io/html/ReadMe.html#setup-on-the-raspberry-pi.
 
-# In terminal:
+### In terminal:
 
 $ sudo pip3 install pi3d
 
@@ -40,7 +40,7 @@ You can also start coding right away (here is a getting started tutorial https:/
 
 This is how to download (Steps based on https://pi3d.github.io/html/ReadMe.html#setup-on-the-raspberry-pi):
 
-
+### In terminal:
 
 $ wget https://github.com/pi3d/pi3d_demos/archive/master.zip
 
