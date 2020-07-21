@@ -40,13 +40,17 @@ You can also start coding right away (here is a getting started tutorial https:/
 
 This is how to download (Steps based on https://pi3d.github.io/html/ReadMe.html#setup-on-the-raspberry-pi):
 
-####### download demos in their latest form, quicker #######
+
+
 $ wget https://github.com/pi3d/pi3d_demos/archive/master.zip
+
 $ unzip master.zip
+
 $ rm master.zip
+
 $ mv pi3d_demos-master pi3d_demos
-####### or download the full revision history, slower ######
-$ git clone https://github.com/pi3d/pi3d_demos.git
+
+
 
 To run them ALL through and test that it works, do:
 
