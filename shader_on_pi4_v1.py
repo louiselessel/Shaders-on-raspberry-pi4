@@ -30,7 +30,6 @@ WIDTH, HEIGHT = DISPLAY.width, DISPLAY.height
 """
 
 ## Try out different shaders/filters
-
 #shader = pi3d.Shader("shaders/test") # the most rudamentary shader - red color
 #shader = pi3d.Shader("shaders/filter_toon") # one of the pi3D shaders, using tex input
 #shader = pi3d.Shader("shaders/test_shadertoy")
