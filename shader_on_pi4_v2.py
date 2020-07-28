@@ -7,19 +7,19 @@ import datetime
 import math
 
 LOGGER = pi3d.Log(__name__, level='INFO', format='%(message)s')
-LOGGER.info('''#########################################################
+LOGGER.info('''#####################################
 Running shader program
-#########################################################''')
+#####################################''')
 
 
 BACKGROUND_COLOR = (0.0, 0.0, 1.0, 0.0)
 
 # Set shader resolution ratio
-S_RES_W = 2
+S_RES_W = 1
 S_RES_H = 1
 
 #----------------------- CHOOSE WINDOW SIZE
-fullscreen = True
+fullscreen = False
 
 if (fullscreen == True):
     ## Do Fullscreen
