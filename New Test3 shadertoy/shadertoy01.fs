@@ -4,7 +4,7 @@
 #define iResolution unif[0]
 #define scale unif[1][1]
 
-void main(void) {
+void main(void) 
     float t = iTime;
     vec2 r = iResolution.xy;
     float invScale = 1.0 / scale; // obviously scale must not be zero!
