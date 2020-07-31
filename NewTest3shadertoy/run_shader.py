@@ -2,8 +2,8 @@ import time
 import demo
 import pi3d
 
-(W, H) = (None, None) # None should fill the screen (there are edge issues)
-#(W, H) = (400, 400) # Windowed
+#(W, H) = (None, None) # None should fill the screen (there are edge issues)
+(W, H) = (400, 400) # Windowed
 SCALE = 0.25 #should have 16th the shadertoy workload
 
 BACKGROUND_COLOR = (0.0, 0.0, 0.0, 0.0)
@@ -17,11 +17,11 @@ if W is None or H is None:
  (W, H) = (display.width, display.height)
  print('setting display size to ' + str(W) + ' ' + str(H))
 sprite = pi3d.Triangle(corners=((-1.0, -1.0),(-1.0, 3.0),(3.0, -1.0)))
-#shader = pi3d.Shader('shadertoy01')
+shader = pi3d.Shader('shadertoy01')
 #shader = pi3d.Shader('shadertoy02')
 #shader = pi3d.Shader('shadertoy03_fire') # fire
 #shader = pi3d.Shader('shadertoy04') # cloud
-shader = pi3d.Shader('shadertoy05') # cloud
+#shader = pi3d.Shader('shadertoy05') # psychedelic
 sprite.set_shader(shader)
 
 ## offscreen texture stuff ##

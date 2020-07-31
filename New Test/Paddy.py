@@ -6,7 +6,7 @@ from subprocess import Popen
 BACKGROUND_COLOR = (0.0, 0.0, 0.0, 0.0)
 
 #----------------------- CHOOSE WINDOW SIZE
-fullscreen = True
+fullscreen = False
 
 if (fullscreen == True):
     ## Do Fullscreen
@@ -25,7 +25,8 @@ print(display.opengl.gl_id)
 sprite = pi3d.Triangle(corners=((-1.0, -1.0),(-1.0, 3.0),(3.0, -1.0)))
 #shader = pi3d.Shader('shadertoy01')
 #shader = pi3d.Shader('shadertoy02')
-shader = pi3d.Shader('shadertoy03_fire')
+#shader = pi3d.Shader('shadertoy03_fire')
+shader = pi3d.Shader('shadertoy05')
 sprite.set_shader(shader)
 kbd = pi3d.Keyboard()
 #file = "Paddy.py"
