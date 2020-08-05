@@ -40,9 +40,11 @@ else:
 ## Try out different shaders/filters
 #shader = pi3d.Shader("shaders/filter_sepia")   # maps image onto sprite - sepia tone
 #shader = pi3d.Shader("shaders/uv_flat_my")      # maps image onto sprite
-shader = pi3d.Shader("shaders/proto_v2")       # paste shader code here
+shader = pi3d.Shader("shaders/filter_toon")
+#shader = pi3d.Shader("shaders/proto_v2")       # paste shader code here
 #shader = pi3d.Shader("shaders/paste_here1")    # this uses old code way
 #shader = pi3d.Shader("shaders/paste_here2")    # this uses old code way
+
 
 ## Set the texture and put shader on a sprite (a rectangle)
 # if using the pixels from the loaded texture (buffer), you might have to set flip=True on sprite
@@ -91,7 +93,7 @@ while DISPLAY.loop_running():
   # Set uniforms, for python reasons, these are set on '48-57' see notes in bottom
   # I'm still researching this part.
   #sprite.set_custom_data(48, [t, WIDTH, HEIGHT])
-  sprite.set_custom_data(48, [t, S_RES_W, S_RES_H])
+  #sprite.set_custom_data(48, [t, S_RES_W, S_RES_H])
   #sprite.set_custom_data(48, [t, 800, 800])
   #sprite.set_custom_data(51, [var, var, var])
   #sprite.set_custom_data(54, [var, var, var])
@@ -147,6 +149,10 @@ while DISPLAY.loop_running():
     NB line width and bump factor clash but shouldn't be an issue
 """
 
+
+# Passing in uniforms to post processing shaders
+# pass uniforms into postprocessing flatsh
+#post.draw({0:W, 1:H, 4:SCALE, 6:0.9, 7:0.5})
 
 """
 Passing in own uniforms

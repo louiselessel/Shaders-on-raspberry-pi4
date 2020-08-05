@@ -4,6 +4,10 @@
 #define iResolution unif[0]
 #define scale unif[1][1]
 
+// Example of https://www.shadertoy.com/view/XsXXDn
+// http://www.pouet.net/prod.php?which=57245
+// If you intend to reuse this shader, please add credits to 'Danilo Guanabara'
+
 void main(void) {
     float t = iTime;
     vec2 r = iResolution.xy;

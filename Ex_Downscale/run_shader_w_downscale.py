@@ -2,20 +2,18 @@ import time
 import demo
 import pi3d
 
-(W, H) = (None, None) # None should fill the screen (there are edge issues)
-#(W, H) = (400, 400) # Windowed
-SCALE = 0.5 #should have 16th the shadertoy workload
+## This code was made with help from paddywwoof
+
+#(W, H) = (None, None) # None should fill the screen (there are edge issues)
+(W, H) = (400, 400) # None should fill the screen (there are edge issues)
+SCALE = 0.8 #should have 16th the shadertoy workload
 
 BACKGROUND_COLOR = (0.0, 0.0, 0.0, 0.0)
 
-display = pi3d.Display.create(w=W, h=H, frames_per_second=30.0, 
-                              background=BACKGROUND_COLOR,
-                              display_config=pi3d.DISPLAY_CONFIG_HIDE_CURSOR | pi3d.DISPLAY_CONFIG_MAXIMIZED,
-                              use_glx=True)
+display = pi3d.Display.create(w=W, h=H, frames_per_second=30.0, background=BACKGROUND_COLOR)
 print(display.opengl.gl_id)
 if W is None or H is None:
  (W, H) = (display.width, display.height)
- print('setting display size to ' + str(W) + ' ' + str(H))
 sprite = pi3d.Triangle(corners=((-1.0, -1.0),(-1.0, 3.0),(3.0, -1.0)))
 shader = pi3d.Shader('shadertoy01')
 sprite.set_shader(shader)
@@ -29,12 +27,13 @@ kbd = pi3d.Keyboard()
 sprite.unif[0:2] = [W, H]
 sprite.unif[4] = SCALE
 tm0 = time.time()
+
 while display.loop_running():
     post.start_capture()
     sprite.draw()
     post.end_capture()
     post.draw()
-    sprite.unif[3] = (time.time() - tm0) * 0.2
+    sprite.unif[3] = time.time() - tm0
     k = kbd.read()
     if k == 27:
         kbd.close()
