@@ -19,13 +19,13 @@ if W is None or H is None:
 
 ## shadertoy shader stuff ##
 sprite = pi3d.Triangle(corners=((-1.0, -1.0),(-1.0, 3.0),(3.0, -1.0)))
-#shader = pi3d.Shader('shadertoy01') # shadertoy shader
-shader = pi3d.Shader('cloud') # shadertoy shader
+shader = pi3d.Shader('shadertoy01') # shadertoy shader
+#shader = pi3d.Shader('cloud') # shadertoy shader
 sprite.set_shader(shader)
 
 ## offscreen texture stuff ##
 cam = pi3d.Camera(is_3d=False)
-postsh = pi3d.Shader('post_pixelizeSplit')
+postsh = pi3d.Shader('post_pixelizeSplit_edgefix')
 post = pi3d.PostProcess(camera=cam, shader=postsh, scale=SCALE)
 
 ## interactive input ##

@@ -36,11 +36,15 @@ void main(void) {
     vec2 offset = vec2(invScale - 1.0) * 0.5;
     
     // edge uv is usually at 0.99 -> but now it lands at
-    float uvAtEdge = 0.9;
+    float uvAtEdge = 0.55;
+    //float edgeUV = 0.8;
     //float edgeUV = (invScale / uvAtEdge) - offset.x;
-    //float edgeUV = invScale - offset.x * uvAtEdge;
-    float edgeUV = 0.9;
+    float edgeUV = uvAtEdge * invScale - offset.x;
+    //float edgeUV = uvAtEdge - offset.x;
+    //float edgeUV = uvAtEdge/iScale;
     // so we get it from there
+    
+    float edgeUV = onePixelSizeX * iScale;
     
     //float scaledUV_x = iScale * uv.x;
     
