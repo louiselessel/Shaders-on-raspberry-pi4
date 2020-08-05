@@ -8,7 +8,7 @@ import pi3d
 (W, H) = (400, 400) # None should fill the screen (there are edge issues)
 SCALE = 0.8 #should have 16th the shadertoy workload
 
-BACKGROUND_COLOR = (0.0, 0.0, 0.0, 0.0)
+BACKGROUND_COLOR = (1.0, 0.0, 0.0, 0.0)
 
 display = pi3d.Display.create(w=W, h=H, frames_per_second=30.0, background=BACKGROUND_COLOR)
 print(display.opengl.gl_id)

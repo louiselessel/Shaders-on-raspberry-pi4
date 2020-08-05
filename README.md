@@ -65,6 +65,8 @@ Otherwise just open the nameOfFile.py in Thonny and click Run.
 I did not make pi3d.
 Please support the community and authors over at https://pi3d.github.io/html/ReadMe.html#acknowledgements.
 
+> pi3d is written by Tim Skillman, Paddy Gaunt, Tom Ritchford Copyright © 2012 - 2019
+
 > Pi3d started with code based on Peter de Rivaz ‘pyopengles’ (https://github.com/peterderivaz/pyopengles) with some tweaking from Jon Macey’s code (jonmacey.blogspot.co.uk/2012/06/).
 
 > Many Thanks, especially to Peter de Rivaz, Jon Macey, Richar Urwin, Peter Hess, David Wallin, Avishay Orpaz (avishorp), Guenter Kreidl, Benjamin Denozière, Matthew Coleman, Piotr Bednarski, @swehner and others who have contributed to pi3d - keep up the good work!
