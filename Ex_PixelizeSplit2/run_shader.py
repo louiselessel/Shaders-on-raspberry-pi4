@@ -3,10 +3,10 @@ import demo
 import pi3d
 
 #(W, H) = (None, None) # Fullscreen - None should fill the screen (there are edge issues)
-(W, H) = (400, 400) # Windowed
-SCALE = .70 # downscale the shadertoy shader - should have 16th the shadertoy workload
+(W, H) = (200, 400) # Windowed
+SCALE = .20 # downscale the shadertoy shader - should have 16th the shadertoy workload
 
-BACKGROUND_COLOR = (1.0, 0.0, 0.0, 0.0)
+BACKGROUND_COLOR = (0.0, 0.0, 0.0, 0.0)
 
 display = pi3d.Display.create(w=W, h=H, frames_per_second=24.0,
                               background=BACKGROUND_COLOR,
@@ -25,7 +25,8 @@ sprite.set_shader(shader)
 
 ## offscreen texture stuff ##
 cam = pi3d.Camera(is_3d=False)
-postsh = pi3d.Shader('post_pixelizeSplit_edgefix')
+#postsh = pi3d.Shader('post_pixelizeSplit_edgefix')
+postsh = pi3d.Shader('post_pixelizeSplit_edgefix_full')
 post = pi3d.PostProcess(camera=cam, shader=postsh, scale=SCALE)
 
 ## interactive input ##

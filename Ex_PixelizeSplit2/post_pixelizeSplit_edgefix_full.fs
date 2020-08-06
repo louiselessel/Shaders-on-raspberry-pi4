@@ -65,7 +65,8 @@ void main(void) {
     // if half - make pixelated
     if (uv.x <= 0.5) {
         // color the pixelation
-        gl_FragColor = texture2D(tex0, vec2(x + shiftX , y + shiftY));
+        //gl_FragColor = texture2D(tex0, vec2(x + shiftX , y + shiftY));
+        gl_FragColor = texture2D(tex0, vec2(uv.x, uv.y)); // original
     }
     // Original pixels
     else {
@@ -76,31 +77,40 @@ void main(void) {
     // Draw edges last
     // X
     if ((uv.x >= edgeUV_r - linewidthX)) {// && (uv.y >= 0.5)) {
-        //gl_FragColor = vec4(0.0, 0.0, 1.0, 1.0);
-        gl_FragColor = texture2D(tex0, vec2(uv.x-onePixelSizeX, uv.y));
-        gl_FragColor.a = 1.0;
+        gl_FragColor = vec4(0.0, 0.0, 1.0, 1.0);
+        //gl_FragColor = texture2D(tex0, vec2(uv.x-onePixelSizeX, uv.y));
+        //gl_FragColor.a = 1.0;
     }
-    /* // Don't fix left edge - it is already handled by pixelizing
     if (uv.x <= edgeUV_l) {
-        //gl_FragColor = vec4(0.0, 0.0, 1.0, 1.0);
-        gl_FragColor = texture2D(tex0, vec2(uv.x+onePixelSizeX, uv.y));
-        gl_FragColor.a = 1.0;
+        gl_FragColor = vec4(0.0, 0.0, 1.0, 1.0);
+        //gl_FragColor = texture2D(tex0, vec2(uv.x+onePixelSizeX, uv.y));
+        //gl_FragColor.a = 1.0;
+    }
+    // Y
+    if (uv.y <= edgeUV_b) {
+        gl_FragColor = vec4(0.0, 0.0, 1.0, 1.0);
+        //gl_FragColor = texture2D(tex0, vec2(uv.x, uv.y+onePixelSizeY));
+        //gl_FragColor.a = 1.0;
+    }
+    if (uv.y >= edgeUV_t - linewidthY) {
+        gl_FragColor = vec4(0.0, 0.0, 1.0, 1.0);
+        //gl_FragColor = texture2D(tex0, vec2(uv.x, uv.y-onePixelSizeY));
+        //gl_FragColor.a = 1.0;
+    }
+    
+    
+    /*
+    if ((uv.x >= edgeUV_r - linewidth) && (uv.x <= edgeUV)) {
+        gl_FragColor = vec4(0.0, 0.0, 1.0, 1.0);
     }
     */
-    // Y
-    // only fix half of Y
-    if (uv.x >= 0.5 ) {
-        if (uv.y <= edgeUV_b) {
-            //gl_FragColor = vec4(0.0, 0.0, 1.0, 1.0);
-            gl_FragColor = texture2D(tex0, vec2(uv.x, uv.y+onePixelSizeY));
-            gl_FragColor.a = 1.0;
-        }
-        if (uv.y >= edgeUV_t - linewidthY) {
-            //gl_FragColor = vec4(0.0, 0.0, 1.0, 1.0);
-            gl_FragColor = texture2D(tex0, vec2(uv.x, uv.y-onePixelSizeY));
-            gl_FragColor.a = 1.0;
-        }
-    }
+    
+    
+    // straight UV strangeness
+    // gl_FragColor = vec4(uv.x,0.0, 0.0, 1.0);
+    
+    //gl_FragColor.a = 1.0;
+    
     
     // DEBUG checks
     //gl_FragColor = texture2D(tex0, vec2(x,y));
