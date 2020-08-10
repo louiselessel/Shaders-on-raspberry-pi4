@@ -1,9 +1,7 @@
 # Shaders-on-raspberry-pi4
 
 Download the whole repo on the pi4.
-
 Open the folder Shaders-on-raspberry-pi4 and open any of the examples in the Ex_name folders.
-
 Open the .py file (run_shader_w_downscale.py) in Geany and click run.
 
 The code looks for the name and location of the shader... like:
