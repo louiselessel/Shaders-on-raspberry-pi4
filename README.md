@@ -10,6 +10,8 @@ Examples:
 - Other examples use postprocessing to render effects based on the Shadertoy shader. Here the shadertoy shader is treated as a buffer for sampling from.
 
 
+![Postprocessing example](https://github.com/louiselessel/Shaders-on-raspberry-pi4/blob/master/Work-in-progress/Documentation/Screenshot_postprocessing.png)
+
 ## HOW TO
 
 Download this whole repo on the pi4.
