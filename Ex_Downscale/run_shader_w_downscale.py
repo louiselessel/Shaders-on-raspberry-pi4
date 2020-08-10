@@ -5,10 +5,12 @@ import pi3d
 ## This code was made with help from paddywwoof
 
 #(W, H) = (None, None) # None should fill the screen (there are edge issues)
-(W, H) = (400, 400) # None should fill the screen (there are edge issues)
-SCALE = 0.8 #should have 16th the shadertoy workload
+(W, H) = (400, 400) # Windowed
 
-BACKGROUND_COLOR = (1.0, 0.0, 0.0, 0.0)
+# For scale, make sure the numbers are divisible to resolution with no remainders (use even numbers)
+SCALE = 0.2
+
+BACKGROUND_COLOR = (0.0, 0.0, 0.0, 0.0)
 
 display = pi3d.Display.create(w=W, h=H, frames_per_second=30.0, background=BACKGROUND_COLOR)
 print(display.opengl.gl_id)
