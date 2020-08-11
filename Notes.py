@@ -17,7 +17,11 @@ post.draw({0:W, 1:H, 4:SCALE, 6:0.9, 7:0.5})
 """
 
 """
-Adresses for passing in own uniforms:
+In Pi3d these are used as follows, but since I am rendering shaders flat and dont need lighting or anything else...
+I use their addresses differently.
+Left side in .fs file, right side in .py file.
+
+Adresses for passing in own uniforms
 
  # uniform variables all in one array (for Shape and one for Buffer)
     self.unif =  (ctypes.c_float * 60)(
