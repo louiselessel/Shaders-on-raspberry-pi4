@@ -7,7 +7,7 @@ import pi3d
 #(W, H) = (None, None) # None should fill the screen (there are edge issues)
 (W, H) = (400, 400) # Windowed
 
-# For scale, make sure the numbers are divisible to resolution with no remainders (use even numbers)
+# For scale, make sure the numbers are divisible to the resolution with no remainders (use even numbers between 0 and 1). 1.0 is full non-scaled resolution.
 SCALE = 0.2
 
 BACKGROUND_COLOR = (0.0, 0.0, 0.0, 0.0)

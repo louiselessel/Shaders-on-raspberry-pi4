@@ -4,7 +4,8 @@ import pi3d
 
 #(W, H) = (None, None) # Fullscreen - None should fill the screen (there are edge issues)
 (W, H) = (400, 400) # Windowed
-SCALE = .70 # downscale the shadertoy shader - should have 16th the shadertoy workload
+# For scale, make sure the numbers are divisible to the resolution with no remainders (use even numbers between 0 and 1). 1.0 is full non-scaled resolution.
+SCALE = .70 # downscale the shadertoy shader
 
 BACKGROUND_COLOR = (1.0, 0.0, 0.0, 0.0)
 
