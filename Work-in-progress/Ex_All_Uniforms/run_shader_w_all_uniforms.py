@@ -11,7 +11,7 @@ BACKGROUND_COLOR = (0.0, 0.0, 0.0, 0.0)
 
 display = pi3d.Display.create(w=W, h=H, frames_per_second=24.0,
                               background=BACKGROUND_COLOR,
-                              display_config=pi3d.DISPLAY_CONFIG_HIDE_CURSOR | pi3d.DISPLAY_CONFIG_MAXIMIZED,
+                              #display_config=pi3d.DISPLAY_CONFIG_HIDE_CURSOR | pi3d.DISPLAY_CONFIG_MAXIMIZED,
                               use_glx=True)
 print(display.opengl.gl_id)
 if W is None or H is None:
@@ -29,16 +29,21 @@ postsh = pi3d.Shader('post_vanilla')
 post = pi3d.PostProcess(camera=cam, shader=postsh, scale=SCALE)
 
 ## interactive input ##
-mouse = (0.9, 0.5) # hardcoded, replace these with interactive mouse xy coordinates
 kbd = pi3d.Keyboard()
+
+mouse = pi3d.Mouse(restrict = False)
+mouse.start()
+mx, my = mouse.position()
+
+print(mx)
 
 # pass uniforms into our base shader
 sprite.unif[0:2] = [W, H] # iResolution
 sprite.unif[4] = SCALE # iScale
-sprite.unif[6:8] = [mouse[0], mouse[1]] # iMouse
+sprite.unif[6:8] = [mx, my] # iMouse
 
 # pass uniforms into postprocessing postsh
-post.draw({0:W, 1:H, 4:SCALE, 6:mouse[0], 7:mouse[1]})
+post.draw({0:W, 1:H, 4:SCALE, 6:mx, 7:my})
 
 # time at start
 tm0 = time.time()
@@ -49,14 +54,21 @@ while display.loop_running():
     sprite.draw()
     post.end_capture()
     post.draw()
-    # setting interactive / changing uniforms
-    sprite.unif[3] = (time.time() - tm0) * 1.0    # change the multiplier to slow time
-    sprite.unif[6:8] = [mouse[0], mouse[1]] 
-    post.draw({6:mouse[0], 7:mouse[1]})
+    
+    ## inputs
+    mx, my = mouse.position()
+    print(str(mx) + ', ' + str(my))
     # keyboard control
     k = kbd.read()
     if k == 27:
         kbd.close()
+        mouse1.stop()
         display.stop()
         break
+    
+    # setting interactive / changing uniforms
+    sprite.unif[3] = (time.time() - tm0) * 1.0    # change the multiplier to slow time
+    sprite.unif[6:8] = [mx, my] 
+    post.draw({6:mx, 7:my})
+
 

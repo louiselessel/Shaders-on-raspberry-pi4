@@ -11,7 +11,7 @@ BACKGROUND_COLOR = (1.0, 0.0, 0.0, 0.0)
 
 display = pi3d.Display.create(w=W, h=H, frames_per_second=24.0,
                               background=BACKGROUND_COLOR,
-                              #display_config=pi3d.DISPLAY_CONFIG_HIDE_CURSOR | pi3d.DISPLAY_CONFIG_MAXIMIZED,
+                              display_config=pi3d.DISPLAY_CONFIG_HIDE_CURSOR | pi3d.DISPLAY_CONFIG_MAXIMIZED,
                               use_glx=True)
 print(display.opengl.gl_id)
 if W is None or H is None:
@@ -43,7 +43,6 @@ post.draw({0:W, 1:H, 4:SCALE, 6:mouse[0], 7:mouse[1]})
 
 # time at start
 tm0 = time.time()
-sprite.unif[3] = 20 
 
 while display.loop_running():
     # drawing
