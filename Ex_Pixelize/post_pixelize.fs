@@ -26,6 +26,11 @@ void main(void) {
     float shiftX = (pixelScalar * iScale) / iResolution.x;
     float shiftY = (pixelScalar * iScale) / iResolution.y;
     
+    // you may have to change the shift values depending on your
+    // iScale and pixelScalar values to get to best alignment
+    //shiftX *= 0.5; // 2.0;
+    //shiftY *= 0.5; // 2.0; 
+    
     // color the pixelation
     gl_FragColor = texture2D(tex0, vec2(x + shiftX , y + shiftY));
     gl_FragColor.a = 1.0;

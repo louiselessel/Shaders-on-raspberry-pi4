@@ -6,7 +6,7 @@
 
 varying vec2 texcoordout;
 
-float pixelScalar = 10.0;
+float pixelScalar = 2.0;
 
 // based on https://www.shadertoy.com/view/MsKfz3 by luka712
 // https://luka712.github.io/2018/07/01/Pixelate-it-Shadertoy-Unity/
@@ -25,13 +25,24 @@ void main(void) {
     
     float shiftX = (pixelScalar * iScale) / iResolution.x;
     float shiftY = (pixelScalar * iScale) / iResolution.y;
-   
+    
+    // you may have to change the shift values depending on your
+    // iScale and pixelScalar values to get to best alignment
+    //shiftX *= 0.5; // 2.0;
+    //shiftY *= 0.5; // 2.0; 
+
     
     // if half
-    if (uv.x <= 0.5) {
+    if (uv.x <= 0.5){
+        // color the pixelation
+        gl_FragColor = texture2D(tex0, vec2(x + shiftX, y + shiftY));
+    }
+    /* // if lower half
+    else if (uv.y <= 0.5) {
         // color the pixelation
         gl_FragColor = texture2D(tex0, vec2(x + shiftX , y + shiftY));
     }
+    */
     
     // original pixel
     else {
