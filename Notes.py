@@ -17,11 +17,25 @@ post.draw({0:W, 1:H, 4:SCALE, 6:0.9, 7:0.5})
 """
 
 """
-In Pi3d these are used as follows, but since I am rendering shaders flat and dont need lighting or anything else...
-I use their addresses differently.
-Left side in .fs file, right side in .py file.
+UNIFORMS
+Adresses for passing in own uniforms to the shadertoy shader.
 
-Adresses for passing in own uniforms
+In Pi3d these are used as follows, but since I am rendering shaders flat and
+don't need lighting or anything else... I'm overwriting the normal content.
+
+EXAMPLE:
+In .py file, pass the uniforms to the shader:
+    sprite.unif[0:2] = [W, H]       # iResolution (from 0 to 1, excluding 2)
+    sprite.unif[2] = 0.0            # iTime - shader playback time
+    sprite.unif[6:8] = [MX, MY]     # iMouse - xpos, ypos
+    sprite.unif[9:11] = [MXC, MYC]    # iMouse - xposClicked, yposClicked
+    
+In .fs file, receive and assign the uniforms in the shader:
+    #define iResolution unif[0]
+    #define iTime unif[0][2]
+    #define iMouse vec4(unif[3][0], unif[3][1], unif[4][0], unif[4][1])
+
+Left side is numeration in .fs file, right side in .py file.
 
  # uniform variables all in one array (for Shape and one for Buffer)
     self.unif =  (ctypes.c_float * 60)(

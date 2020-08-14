@@ -1,20 +1,14 @@
-
-
-
-
-
-
-
-
-
-	#include std_head_fs.inc
-	#define iTime unif[1][0]
-	#define iResolution unif[0]
-	#define iScale unif[1][1]
-	#define iMouse unif[3]
-	
- 
-
+    #include std_head_fs.inc
+    #define iResolution unif[0]
+    #define iTime unif[0][2]
+    #define iTimeDelta unif[1][0]
+    #define iScale unif[1][1]
+    #define iFrame unif[1][2]
+    #define iMouse vec4(unif[2][0], unif[2][1], unif[3][0], unif[3][1])
+    #define iDate unif[4]
+    
+    //#define ownVar1 unif[16]
+    //#define ownVar2 unif[19]
 
  
 
