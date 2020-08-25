@@ -17,6 +17,7 @@ Downscaled to 0.8, Downscaled to 0.2:
 ![Downscale example 0.2](https://github.com/louiselessel/Shaders-on-raspberry-pi4/blob/master/Work-in-progress/Documentation/Screenshot_0.2scale.png)
 
 Image of the Postprocesing Pixelize effect:
+
 ![Postprocessing example](https://github.com/louiselessel/Shaders-on-raspberry-pi4/blob/master/Work-in-progress/Documentation/Screenshot_postprocessing.png)
 
 
