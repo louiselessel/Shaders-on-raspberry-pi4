@@ -33,7 +33,7 @@ In .py file, pass the uniforms to the shader:
 In .fs file, receive and assign the uniforms in the shader:
     #define iResolution unif[0]
     #define iTime unif[0][2]
-    #define iMouse vec4(unif[3][0], unif[3][1], unif[4][0], unif[4][1])
+    #define iMouse vec4(unif[2][0], unif[2][1], unif[3][0], unif[3][1])
 
 Left side is numeration in .fs file, right side in .py file.
 

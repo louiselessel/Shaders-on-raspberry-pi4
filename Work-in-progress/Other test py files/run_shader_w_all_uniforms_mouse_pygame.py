@@ -1,11 +1,12 @@
 import time
 import demo
 import pi3d
+import pygame
 
 #(W, H) = (None, None) # Fullscreen - None should fill the screen (there are edge issues)
 (W, H) = (400, 400) # Windowed
 # For scale, make sure the numbers are divisible to the resolution with no remainders (use even numbers between 0 and 1). 1.0 is full non-scaled resolution.
-SCALE = .2 # downscale the shadertoy shader
+SCALE = 0.2 # downscale the shadertoy shader
 
 timeScalar = 1.0 # for scaling the speed of time
 fps = 30
@@ -35,7 +36,7 @@ post = pi3d.PostProcess(camera=cam, shader=postsh, scale=SCALE)
 ## interactive input ##
 kbd = pi3d.Keyboard()
 
-mouse = pi3d.Mouse() # (restrict = False)
+mouse = pi3d.Mouse() # pi3d.Mouse(restrict = True)
 mouse.start()
 MX, MY = mouse.position()
 MC = mouse.button_status() # 8 = hover, 9 = right Click down, 10 = left C, 12 = middle C
@@ -52,8 +53,8 @@ sprite.unif[2] = iTIME          # iTime - shader playback time
 sprite.unif[3] = iTIMEDELTA     # iTimeDelta - render time (in seconds) ----- not implemented yet
 sprite.unif[4] = SCALE          # iScale - scale for downscaling the resolution of shader
 sprite.unif[5] = iFRAME         # iFrame - shader playback frame
-sprite.unif[6:8] = [MX, MY]     # iMouse - xpos, ypos
-sprite.unif[9:11] = [MX, MY]    # iMouse - xposClicked, yposClicked
+sprite.unif[6:8] = [MX, MY]     # iMouse - xpos, ypos (set while button held down)
+sprite.unif[9:11] = [MX, MY]    # iMouse - xposClicked, yposClicked (set on click)
 sprite.unif[12:15] = [YR, MTH, DAY] # iDate ----- not implemented yet
 # iChannel0...3, iChannelTime and iChannelResolution not implemented yet
 
@@ -67,6 +68,57 @@ post.draw({0:W, 1:H, 4:SCALE, 6:MX, 7:MY})    # you can add more as you need, li
 # time at start
 tm0 = time.time()
 
+# initializes Pygame
+#pygame.init()
+
+# sets the window title
+#pygame.display.set_caption(u'Mouse events')
+
+# sets the window size
+#pygame.display.set_mode((W, H))
+
+
+def mouseFromPygame():
+    # initializes Pygame
+    #pygame.init()
+
+    # sets the window title
+    #pygame.display.set_caption('Mouse events')
+
+    # sets the window size
+    #pygame.display.set_mode((W, H))
+
+    # infinite loop
+    #while True:
+    # gets a single event from the event queue
+    event = pygame.event.wait()
+
+    # if the 'close' button of the window is pressed
+    if event.type == pygame.QUIT:
+        # stops the application
+        # finalizes Pygame
+        pygame.quit()
+
+    # if any mouse button is pressed
+    if event.type == pygame.MOUSEBUTTONDOWN:
+        print('test')
+            # prints on the console the pressed button and its position at that moment
+            #print u'button {} pressed in the position {}'.format(event.button, event.pos)
+
+    # if any mouse button is released
+    if event.type == pygame.MOUSEBUTTONUP:
+        print('test')
+            # prints on the console the button released and its position at that moment
+            #print u'button {} released in the position {}'.format(event.button, event.pos)
+
+        # if the mouse is moved
+    if event.type == pygame.MOUSEMOTION:
+        print(event.pos)
+            # prints on the console the pressed buttons, and their position and relative movement at that time
+            #print u'pressed buttons {}, position {} and relative movement {}'.format(event.buttons, event.pos, event.rel)
+    
+    
+
 while display.loop_running():
     # drawing
     post.start_capture()
@@ -78,11 +130,12 @@ while display.loop_running():
     MX, MY = mouse.position()
     MVX, MVY = mouse.velocity()
     MC = mouse.button_status()
-    #print(str(MX) + ', ' + str(MY))
+    print('(' + str(MX) + ', ' + str(MY) + ')')
     
     # if mouse click on this frame (any button)
     if MC == 9 or MC == 10 or MC == 12 and MouseClicked == False:
         sprite.unif[9:11] = [MX, MY]    # update iMouse - xposClicked, yposClicked
+        #print('(' + str(MX) + ', ' + str(MY) + ')')
         MouseClicked = True
     # while mouse is clicked (button held down)
     if MouseClicked == True:
@@ -107,5 +160,5 @@ while display.loop_running():
     # updating variables
     iFRAME += 1
     #print(int(FRAME/fps))    # calculate seconds
-
+    #mouseFromPygame()
 
