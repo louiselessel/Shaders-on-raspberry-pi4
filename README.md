@@ -10,10 +10,13 @@ Examples:
 - Other examples use postprocessing to render effects based on the Shadertoy shader. Here the shadertoy shader is treated as a buffer for sampling from.
 
 
-Downscaled 0.8, Downscaled 0.2, Postprocesing Pixelize:
+Here are image examples for the scaled output (scale of 1.0 is no-scaling).
+Downscaled to 0.8, Downscaled to 0.2:
 
 ![Downscale example 0.8](https://github.com/louiselessel/Shaders-on-raspberry-pi4/blob/master/Work-in-progress/Documentation/Screenshot_0.8scale.png)
 ![Downscale example 0.2](https://github.com/louiselessel/Shaders-on-raspberry-pi4/blob/master/Work-in-progress/Documentation/Screenshot_0.2scale.png)
+
+Image of the Postprocesing Pixelize effect:
 ![Postprocessing example](https://github.com/louiselessel/Shaders-on-raspberry-pi4/blob/master/Work-in-progress/Documentation/Screenshot_postprocessing.png)
 
 
