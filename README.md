@@ -7,18 +7,19 @@ Examples:
 
 - Ex_Simple runs a shader from Shadertoy at the resolution you specify. If fullscreen, the shader will be the resolution of your screen.
 - Ex_Downscale runs a shader from Shadertoy at the resolution you specify, but scaled (SCALE) down for better performance on the pi. Also if fullscreen.
-- Other examples use postprocessing to render effects based on the Shadertoy shader. Here the shadertoy shader is treated as a buffer for sampling from.
+- Ex_All_Uniforms is the most involved and best template for your copy paste, it includes an implementation for all of the standard uniforms, and the scaling.
+- Other examples (eg. Pixelize) use postprocessing to render effects based on the Shadertoy shader. Here the shadertoy shader is treated as a buffer for sampling from.
 
 
 Here are image examples for the scaled output (scale of 1.0 is no-scaling).
 Downscaled to 0.8, Downscaled to 0.2:
 
-![Downscale example 0.8](https://github.com/louiselessel/Shaders-on-raspberry-pi4/blob/master/Work-in-progress/Documentation/Screenshot_0.8scale.png)
-![Downscale example 0.2](https://github.com/louiselessel/Shaders-on-raspberry-pi4/blob/master/Work-in-progress/Documentation/Screenshot_0.2scale.png)
+![Downscale example 0.8](https://github.com/louiselessel/Shaders-on-raspberry-pi4/blob/master/Documentation/Screenshot_0.8scale.png)
+![Downscale example 0.2](https://github.com/louiselessel/Shaders-on-raspberry-pi4/blob/master/Documentation/Screenshot_0.2scale.png)
 
 Image of the Postprocesing Pixelize effect:
 
-![Postprocessing example](https://github.com/louiselessel/Shaders-on-raspberry-pi4/blob/master/Work-in-progress/Documentation/Screenshot_postprocessing.png)
+![Postprocessing example](https://github.com/louiselessel/Shaders-on-raspberry-pi4/blob/master/Documentation/Screenshot_postprocessing.png)
 
 
 ## HOW TO
@@ -49,7 +50,6 @@ Remember to credit the original creator on shadertoy!
 
 NOTE: 
 Currently only fragment shaders (.fs files) are implemented.
-You can delete the work-in-progress folder. I use that for experiments, they are not guaranteed to work.
 
 Thank you to Paddy Gaunt (@paddywwoof) for excellent help and advice on implementing this.
 

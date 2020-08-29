@@ -27,7 +27,6 @@ if W is None or H is None:
 
 ## shadertoy shader stuff ##
 sprite = pi3d.Triangle(corners=((-1.0, -1.0),(-1.0, 3.0),(3.0, -1.0)))
-#shader = pi3d.Shader('snake')
 shader = pi3d.Shader('cloud')
 sprite.set_shader(shader)
 
@@ -78,6 +77,7 @@ post.draw({0:W, 1:H, 2:iTIME, 3:iTIMEDELTA, 4:SCALE, 5:iFRAME,
 
 # time at start
 tm0 = time.time()
+last_time = 0
 
 while display.loop_running():
     # drawing
@@ -120,7 +120,9 @@ while display.loop_running():
     iDate = datetime.datetime.now()
     (YR, MTH, DAY) = (iDate.year, iDate.month, iDate.day)
     iDateSecondsSinceMidnight = iDate.hour*60*60 + iDate.minute*60 + iDate.second
-
+    iTIMEDELTA = display.time - last_time # display.time is set at start of each frame
+    last_time = display.time
+    
     ## pass only the changed shadertoy uniforms into our base shader from shadertoy ##
     sprite.unif[2] = iTIME          # iTime - shader playback time
     sprite.unif[3] = iTIMEDELTA     # iTimeDelta - render time (in seconds) ----- not implemented yet

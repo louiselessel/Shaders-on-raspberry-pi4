@@ -59,62 +59,24 @@ post = pi3d.PostProcess(camera=cam, shader=flatsh, scale=SCALE)
 sprite.unif[0:2] = [W, H]
 sprite.unif[4] = SCALE
 tm0 = time.time()
-
-#-------------------------------------------------
-# Shader display
-'''
-while display.loop_running():
-    post.start_capture()
-    sprite.draw()
-    post.end_capture()
-    post.draw()
-    sprite.unif[3] = time.time() - tm0
-    '''
-
-#-------------------------------------------------
-# This would draw a rectangle with a cross..
-
-# RGB example w/graphics prims.
-# Note, only "RGB" mode is supported currently.
-image = Image.new("RGB", (32, 32))  # Can be larger than matrix if wanted!!
-draw = ImageDraw.Draw(image)  # Declare Draw instance before prims
-# Draw some shapes into image (no immediate effect on matrix)...
-draw.rectangle((0, 0, 31, 31), fill=(0, 0, 0), outline=(0, 0, 255))
-draw.line((0, 0, 31, 31), fill=(255, 0, 0))
-draw.line((0, 31, 31, 0), fill=(0, 255, 0))
-
+f = 0
+(ws, hs) = (int(W*SCALE), int(H*SCALE))
+(xos, yos) = (int((W-ws)* 0.5), int((H-hs)*0.5))
 
 #-------------------------------------------------
 # PUT SHADER ON MATRIX
 
 while display.loop_running():
+    f =+ 1
     post.start_capture()
     sprite.draw()
+    #if (f ==50) or (f==51):
+        #a = Image.fromarray(pi3d.masked_screenshot(xos, yos, ws, hs))
     post.end_capture()
     post.draw()
+
     sprite.unif[3] = time.time() - tm0
     
     # draw the shader buffer into a PIL image here  <---- #
-    
-    # set image to matrix
-    matrix.SetImage(image,0,0)
-
-
-#-------------------------------------------------
-# REGULAR DRAWING ON MATRIX
-'''
-## STATIC DRAWING ##
-matrix.SetImage(image,0,0)
-time.sleep(5)
-matrix.Clear()
-'''
-
-'''
-## ANIMATION ##
-# Scroll image across matrix.
-for n in range(-32, 33):  # Start off top-left, move off bottom-right
-    matrix.Clear()
-    matrix.SetImage(image, n, n)
-    time.sleep(0.2)
-matrix.Clear()
-'''
+    a = Image.fromarray(pi3d.screenshot())
+    matrix.SetImage(a,0,0)
