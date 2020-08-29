@@ -50,6 +50,8 @@ Remember to credit the original creator on shadertoy!
 
 NOTE: 
 Currently only fragment shaders (.fs files) are implemented.
+iMouse uniform is implemented for screen coordinates, not window coordinated. WIP.
+
 
 Thank you to Paddy Gaunt (@paddywwoof) for excellent help and advice on implementing this.
 
