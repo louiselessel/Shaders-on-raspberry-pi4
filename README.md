@@ -9,6 +9,7 @@ Examples:
 - Ex_Downscale runs a shader from Shadertoy at the resolution you specify, but scaled (SCALE) down for better performance on the pi. Also if fullscreen.
 - Ex_All_Uniforms is the most involved and best template for your copy paste, it includes an implementation for all of the standard uniforms, and the scaling.
 - Other examples (eg. Pixelize) use postprocessing to render effects based on the Shadertoy shader. Here the shadertoy shader is treated as a buffer for sampling from.
+- Shader-on-matrix shows how to run the shaders on a Adafruit LED pixel matrix
 
 
 Here are image examples for the scaled output (scale of 1.0 is no-scaling).
@@ -19,7 +20,7 @@ Downscaled to 0.8, Downscaled to 0.2:
 
 Image of the Postprocesing Pixelize effect:
 
-![Postprocessing example](https://github.com/louiselessel/Shaders-on-raspberry-pi4/blob/master/Documentation/Screenshot_postprocessing.png)
+![Postprocessing example](https://github.com/louiselessel/Shaders-on-raspberry-pi4/blob/master/Documentation/Screenshot_postprocessing_new.png)
 
 
 ## HOW TO

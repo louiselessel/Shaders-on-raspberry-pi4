@@ -35,7 +35,10 @@ Then, to make sure you can use pi3d no matter where you place the matrix code fr
 https://github.com/tipam/pi3d
 
 
---------- INSERT Image of placement of the pi3d folder ------------
+Place the repo here. Delete the "-master" part of the name.
+
+![Place pi3d local repo here](https://github.com/louiselessel/Shaders-on-raspberry-pi4/blob/master/Documentation/Screenshot_PlacementOfpi3d.png)
+
 
 
 ### 2. Then, install the imaging library called PIL
