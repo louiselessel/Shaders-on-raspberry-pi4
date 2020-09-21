@@ -14,7 +14,7 @@ void main(void) {
     float len, z=t;
     for(int i=0; i<3; i++) {
         vec2 uv;
-        vec2 p = gl_FragCoord.xy / r * invScale - offset;
+        vec2 p = (gl_FragCoord.xy / r) * invScale - offset;
         uv = p;
         p -= 0.5;
         p.x *= r.x / r.y;
