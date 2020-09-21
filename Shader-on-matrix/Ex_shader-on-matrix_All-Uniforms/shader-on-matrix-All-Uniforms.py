@@ -53,7 +53,8 @@ if W is None or H is None:
 
 ## shadertoy shader stuff ##
 sprite = pi3d.Triangle(corners=((-1.0, -1.0),(-1.0, 3.0),(3.0, -1.0)))
-shader = pi3d.Shader('cloud')
+#shader = pi3d.Shader('cloud')
+shader = pi3d.Shader('shadertoy')
 sprite.set_shader(shader)
 
 ## offscreen texture stuff ##
