@@ -28,7 +28,7 @@ from PIL import ImageDraw
 #-------------------------------------------------
 # Configuration for the shader
 
-(W, H) = (32, 32) # Windowed
+(W, H) = (64, 32) # Windowed - two screens chained
 # For scale, make sure the numbers are divisible to the resolution with no remainders (use even numbers between 0 and 1). 1.0 is full non-scaled resolution.
 SCALE = 1.0 # downscale the shadertoy shader resolution
 
@@ -109,6 +109,7 @@ last_time = 0
 #-------------------------------------------------
 
 # Configuration for the matrix
+options = RGBMatrixOptions()
 options.rows = H
 options.cols = W
 options.chain_length = 1
