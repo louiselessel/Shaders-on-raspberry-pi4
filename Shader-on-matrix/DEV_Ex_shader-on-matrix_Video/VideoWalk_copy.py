@@ -77,15 +77,19 @@ pi3d.Light(lightpos=(1, -1, -3), lightcol=(1.0, 1.0, 0.8), lightamb=(0.25, 0.2, 
 shader = pi3d.Shader("uv_bump")
 flatsh = pi3d.Shader("uv_flat")
 
+"""
 tree2img = pi3d.Texture("textures/tree2.png")
 tree1img = pi3d.Texture("textures/tree1.png")
 hb2img = pi3d.Texture("textures/hornbeam2.png")
 bumpimg = pi3d.Texture("textures/grasstile_n.jpg")
 reflimg = pi3d.Texture("textures/stars.jpg")
 rockimg = pi3d.Texture("textures/rock1.jpg")
+"""
+
 
 FOG = ((0.3, 0.3, 0.4, 0.8), 650.0)
 TFOG = ((0.2, 0.24, 0.22, 1.0), 150.0)
+
 
 #myecube = pi3d.EnvironmentCube(900.0,"HALFCROSS")
 ectex=pi3d.loadECfiles("textures/ecubes","sbox")
@@ -102,6 +106,7 @@ mymap = pi3d.ElevationMap("textures/mountainsHgt.png", name="map",
 mymap.set_draw_details(shader, [mountimg1, bumpimg, reflimg], 128.0, 0.0)
 mymap.set_fog(*FOG)
 
+"""
 #Create tree models
 treeplane = pi3d.Plane(w=4.0, h=5.0)
 
@@ -129,6 +134,8 @@ mytrees3 = pi3d.MergeShape(name="trees3")
 mytrees3.cluster(treemodel2, mymap,0.0,0.0,300.0,300.0,20,"",4.0,2.0)
 mytrees3.set_draw_details(flatsh, [hb2img], 0.0, 0.0)
 mytrees3.set_fog(*TFOG)
+"""
+
 
 #Create monument
 tex = pi3d.Texture(image) # can pass numpy array or PIL.Image rather than path as string
@@ -139,6 +146,7 @@ monument.translate(100.0, -mymap.calcHeight(100.0, 235) + 25.0, 235.0)
 
 #screenshot number
 scshots = 1
+
 
 #avatar camera
 rot = 0.0
@@ -181,9 +189,11 @@ while DISPLAY.loop_running():
       mymap.draw()
   mymap.position(0.0, 0.0, 0.0)
   myecube.draw()
+  """
   mytrees1.draw()
   mytrees2.draw()
   mytrees3.draw()
+  """
 
   mx, my = mymouse.position()
   buttons = mymouse.button_status()
