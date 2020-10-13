@@ -54,10 +54,22 @@ while flag is False:
   time.sleep(1.0)
 
 # Setup display and initialise pi3d
-DISPLAY = pi3d.Display.create(x=50, y=50, frames_per_second=25) # ????? x,y ?
-DISPLAY.set_background(0.4,0.8,0.8,1)      # r,g,b,alpha
+#DISPLAY = pi3d.Display.create(x=50, y=50, frames_per_second=25) # ????? x,y ?
+#DISPLAY.set_background(0.4,0.8,0.8,1)      # r,g,b,alpha
 
+# For scale, make sure the numbers are divisible to the resolution with no remainders (use even numbers between 0 and 1). 1.0 is full non-scaled resolution.
+#SCALE = 1.0
 
+BACKGROUND_COLOR = (0.0, 0.0, 0.0, 0.0)
+
+#timeScalar = 1.0     # for scaling the speed of time
+fps = 30             # framerate
+DISPLAY = pi3d.Display.create(window_title='shader',
+                              w=W, h=H, frames_per_second=fps,
+                              background=BACKGROUND_COLOR,
+                              display_config=pi3d.DISPLAY_CONFIG_HIDE_CURSOR | pi3d.DISPLAY_CONFIG_MAXIMIZED,
+                              use_glx=True
+                              )
 
 
 
@@ -73,13 +85,16 @@ monument = pi3d.Sphere(sx=W, sy=H, sz=W)
 monument.set_draw_details(shader, [tex, tex], 4.0, umult=2.0)
 
 # create 2D flat sprite instead, taking up the whole screen
-sprite = pi3d.Triangle(corners=((-1.0, -1.0),(-1.0, 3.0),(3.0, -1.0)))
-#shader = pi3d.Shader('shader')
+#sprite = pi3d.Triangle(corners=((-1.0, -1.0),(-1.0, 3.0),(3.0, -1.0)))
 #sprite.set_shader(flatsh)
-#sprite.set_draw_details(flats, [tex, tex], 4.0, umult=2.0)
-sprite.set_draw_details(flatsh, [tex])
+#sprite.set_draw_details(flatsh, [tex, tex], 4.0, umult=2.0)
 
 
+CAM2D = pi3d.Camera(is_3d=False)
+sprite = pi3d.Triangle(camera=CAM2D, corners=((-1.0, -1.0),(-1.0, 3.0),(3.0, -1.0)))
+#sprite = pi3d.Triangle(corners=((-1.0, -1.0),(-1.0, 3.0),(3.0, -1.0)))
+sprite.set_shader(flatsh)
+sprite.set_draw_details(flatsh, [tex], umult=2.0, vmult=2.0)
 
 ## Matrix ##
 # Configuration for the matrix
@@ -95,26 +110,26 @@ matrix = RGBMatrix(options = options)
 """
 
 #cam = pi3d.Camera(is_3d=False) # this camera worked in the shader example
-CAMERA = pi3d.Camera.instance() # camera from videowalk example
+#CAMERA = pi3d.Camera.instance() # camera from videowalk example
 
 # Display scene and rotate cuboid
 while DISPLAY.loop_running():
-  CAMERA.reset()
-  CAMERA.position((0, 0, -20))
+  #CAMERA.reset()
+  #CAMERA.position((0, 0, -20))
 
   if flag:
     tex.update_ndarray(image, 0) # specify the first GL_TEXTURE0 i.e. first in buf[0].texture
     flag = False
     
   # this works and draws a sphere with some video mapping (when cam is in use)
-  monument.draw()
-  monument.rotateIncY(0.25)
+  #monument.draw()
+  #monument.rotateIncY(0.25)
   
   # Draw video to screen instead (this draws a weird triangle when CAMERA is in use)
   sprite.draw()
   
   # draw video to matrix
-   # draw the buffer into a PIL image
-   #image = Image.fromarray(pi3d.screenshot())
-   #matrix.SetImage(image,0,0)
+  # draw the buffer into a PIL image
+  #image2 = Image.fromarray(pi3d.screenshot())
+  #matrix.SetImage(image2,0,0)
 
