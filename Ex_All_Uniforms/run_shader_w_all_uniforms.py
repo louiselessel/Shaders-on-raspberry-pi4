@@ -14,10 +14,12 @@ fps = 30 # framerate
 BACKGROUND_COLOR = (0.0, 0.0, 0.0, 0.0)
 
 
-display = pi3d.Display.create(w=W, h=H, frames_per_second=fps,
+display = pi3d.Display.create(window_title='shader',
+                              w=W, h=H, frames_per_second=fps,
                               background=BACKGROUND_COLOR,
                               display_config=pi3d.DISPLAY_CONFIG_HIDE_CURSOR | pi3d.DISPLAY_CONFIG_MAXIMIZED,
-                              use_glx=True)
+                              use_glx=True
+                              )
 
 print(display.opengl.gl_id) # the type of glsl your pi is running
 

@@ -25,6 +25,12 @@ from PIL import Image
 from PIL import ImageDraw
 
 
+"""
+This example runs a shader across multiple matrixes. The example is set up for 2.
+Make sure you set the shader resolution (W, H) you want, 
+and set the amount of matrixes you are using in options.chain_length = 2 further down
+"""
+
 #-------------------------------------------------
 # Configuration for the shader
 
@@ -110,9 +116,9 @@ last_time = 0
 
 # Configuration for the matrix
 options = RGBMatrixOptions()
-options.rows = H
-options.cols = W
-options.chain_length = 1
+options.rows = 32
+options.cols = 32
+options.chain_length = 2
 options.parallel = 1
 options.hardware_mapping = 'adafruit-hat'  # If you have an Adafruit HAT: 'adafruit-hat', else 'regular'
 

@@ -25,6 +25,11 @@ from PIL import Image
 from PIL import ImageDraw
 
 
+"""
+This example runs a shader on one matrix.
+Make sure you set the shader resolution (W, H) to be the resolution of your matrix,
+"""
+
 #-------------------------------------------------
 # Configuration for the shader
 
@@ -109,6 +114,7 @@ last_time = 0
 #-------------------------------------------------
 
 # Configuration for the matrix
+options = RGBMatrixOptions()
 options.rows = H
 options.cols = W
 options.chain_length = 1
