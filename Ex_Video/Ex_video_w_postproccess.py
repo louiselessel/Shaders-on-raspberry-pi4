@@ -60,6 +60,9 @@ t.start()
 while flag is False:
   time.sleep(1.0)
 
+#========================================
+
+## Settings ##
 
 # For scale, make sure the numbers are divisible to the resolution with no remainders (use even numbers between 0 and 1). 1.0 is full non-scaled resolution.
 SCALE = 1.0 # downscale the shadertoy shader resolution

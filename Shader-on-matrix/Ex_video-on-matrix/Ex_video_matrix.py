@@ -22,10 +22,17 @@ or you sample (eg 32 x 32) from the video, at the resolution of your matrix.
 """
 
 ## Video import ##
+
+W, H, P = 32,32,3 # video width, height, bytes per pixel (3 = RGB)
+command = [ 'ffmpeg', '-i', 'succumb_32pix.mp4', '-f', 'image2pipe',
+                      '-pix_fmt', 'rgb24', '-vcodec', 'rawvideo', '-']
+
+
+"""
 W, H, P = 480, 270, 3 # video width, height, bytes per pixel (3 = RGB)
 command = [ 'ffmpeg', '-i', 'exercise01.mpg', '-f', 'image2pipe',
                       '-pix_fmt', 'rgb24', '-vcodec', 'rawvideo', '-']
-
+"""
 """
 W, H, P = 320,240,3 # video width, height, bytes per pixel (3 = RGB)
 command = [ 'ffmpeg', '-i', 'hale_bopp_1_320x240.mpg', '-f', 'image2pipe',
@@ -108,24 +115,26 @@ matrix = RGBMatrix(options = options)
 
 while display.loop_running():
 
-  if flag:
-    tex.update_ndarray(image, 0) # specify the first GL_TEXTURE0 i.e. first in buf[0].texture
-    flag = False
-    
-  # Draw video to screen instead (this draws a weird triangle when CAMERA is in use)
-  sprite.draw()
-  
-  # draw the buffer into a PIL image
-  imageMatrix = Image.fromarray(pi3d.screenshot())
-  
-  # draw the video like this if it matches the pixel resolution of the matrix (32 x 32)
-  # if the video is larger than the resolution of the matrix, it will sample lower left corner of you video
-  #matrix.SetImage(imageMatrix,0,0)
-  
-  # Another option is to sample from a subset of the video pixels
-  # This will sample 32 x 32 from location sampleX, sampleY in the video.
-  # NOTE: must have the minus)
-  sampleX = (W/2)
-  sampleY = (H/2)
-  matrix.SetImage(imageMatrix,-sampleX,-sampleY)
+    if flag:
+        tex.update_ndarray(image, 0) # specify the first GL_TEXTURE0 i.e. first in buf[0].texture
+        flag = False
+        
+    # Draw video to screen instead (this draws a weird triangle when CAMERA is in use)
+    sprite.draw()
 
+    # draw the buffer into a PIL image
+    imageMatrix = Image.fromarray(pi3d.screenshot())
+  
+    ## DRAW MATRIX ##
+    # draw the video like this if it matches the pixel resolution of the matrix (32 x 32)
+    # if the video is larger than the resolution of the matrix, it will sample lower left corner of you video
+    
+    matrix.SetImage(imageMatrix,0,0)
+    
+    # Another option is to sample from a subset of the video pixels
+    # This will sample 32 x 32 from location sampleX, sampleY in the video.
+    # NOTE: must have the minus)
+    
+    #sampleX = (W/2)
+    #sampleY = (H/2)
+    #matrix.SetImage(imageMatrix,-sampleX,-sampleY)
