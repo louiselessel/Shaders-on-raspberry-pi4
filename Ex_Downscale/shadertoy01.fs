@@ -1,20 +1,20 @@
-#include std_head_fs.inc
+    #include std_head_fs.inc
+    #define iResolution unif[0]
+    #define iTime unif[0][2]
+    #define iScale unif[1][1]
 
-#define iTime unif[1][0]
-#define iResolution unif[0]
-#define scale unif[1][1]
 
 void main(void) {
     float t = iTime;
     vec2 r = iResolution.xy;
-    float invScale = 1.0 / scale; // obviously scale must not be zero!
+    float invScale = 1.0 / iScale; // obviously scale must not be zero!
     vec2 offset = vec2(invScale - 1.0) * 0.5;
 
     vec3 c;
     float len, z=t;
     for(int i=0; i<3; i++) {
         vec2 uv;
-        vec2 p = gl_FragCoord.xy / r * invScale - offset;
+        vec2 p = (gl_FragCoord.xy / r) * invScale - offset;
         uv = p;
         p -= 0.5;
         p.x *= r.x / r.y;

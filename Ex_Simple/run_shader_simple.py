@@ -28,11 +28,17 @@ shader = pi3d.Shader('shadertoy_simple')
 sprite.set_shader(shader)
 kbd = pi3d.Keyboard()
 
+# time at code start
 tm0 = time.time()
+
 while display.loop_running():
     sprite.draw()
-    sprite.unif[3] = (time.time() - tm0) * 0.1
-    sprite.unif[0:2] = [WIDTH, HEIGHT]
+
+    ## pass shadertoy uniforms into our base shader from shadertoy ##
+    sprite.unif[0:2] = [WIDTH, HEIGHT]       # iResolution
+    sprite.unif[2] = (time.time() - tm0) * 0.1  # iTime * multiplication to slow time
+    
+    
     if kbd.read() == 27:
         kbd.close()
         display.stop()

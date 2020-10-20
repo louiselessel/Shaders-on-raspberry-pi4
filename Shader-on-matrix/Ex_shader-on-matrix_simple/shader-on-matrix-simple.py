@@ -1,16 +1,5 @@
 #!/usr/bin/env python
 
-# (This is an example similar to an example from the Adafruit fork
-#  to show the similarities. Most important difference currently is, that
-#  this library wants RGB mode.)
-#
-# A more complex RGBMatrix example works with the Python Imaging Library,
-# demonstrating a few graphics primitives and image loading.
-# Note that PIL graphics do not have an immediate effect on the display --
-# image is drawn into a separate buffer, which is then copied to the matrix
-# using the SetImage() function (see examples below).
-# Requires rgbmatrix.so present in the same directory.
-
 # PIL Image module (create or load images) is explained here:
 # http://effbot.org/imagingbook/image.htm
 # PIL ImageDraw module (draw shapes to images) explained here:
@@ -26,16 +15,16 @@ from PIL import ImageDraw
 """
 This example runs a shader on one matrix.
 Make sure you set the shader resolution (W, H) to be the resolution of your matrix,
+NOTE: It only passes in the uniforms for iResolution and iTime and SCALE, to make the example easier to read.
+If you want full shadertoy functionality, use the example called All_Uniforms.
 """
 
 #-------------------------------------------------
 # Configuration for the shader
 
-#(W, H) = (None, None) # None should fill the screen (there are edge issues)
-(W, H) = (32,32) # Windowed
-
+(W, H) = (32, 32) # Windowed
 # For scale, make sure the numbers are divisible to the resolution with no remainders (use even numbers between 0 and 1). 1.0 is full non-scaled resolution.
-SCALE = 1.0
+SCALE = 1.0 # downscale the shadertoy shader resolution
 
 BACKGROUND_COLOR = (0.0, 0.0, 0.0, 0.0)
 
@@ -52,6 +41,8 @@ display = pi3d.Display.create(window_title='shader',
 print(display.opengl.gl_id)
 if W is None or H is None:
  (W, H) = (display.width, display.height)
+ 
+# make shader
 sprite = pi3d.Triangle(corners=((-1.0, -1.0),(-1.0, 3.0),(3.0, -1.0)))
 shader = pi3d.Shader('shadertoy01')
 sprite.set_shader(shader)
@@ -61,8 +52,15 @@ cam = pi3d.Camera(is_3d=False)
 flatsh = pi3d.Shader('post_vanilla')
 post = pi3d.PostProcess(camera=cam, shader=flatsh, scale=SCALE)
 
-sprite.unif[0:2] = [W, H]
-sprite.unif[4] = SCALE
+## set up time ##
+iTIME = 0
+iTIMEDELTA = 0
+
+## pass shadertoy uniforms into our base shader from shadertoy ##
+sprite.unif[0:2] = [W, H]       # iResolution
+sprite.unif[2] = iTIME          # iTime - shader playback time
+sprite.unif[4] = SCALE          # iScale - scale for downscaling the resolution of shader
+
 tm0 = time.time()
 
 
@@ -91,7 +89,8 @@ while display.loop_running():
     post.end_capture()
     post.draw()
 
-    sprite.unif[3] = (time.time() - tm0) * timeScalar
+    iTIME = (time.time() - tm0) * timeScalar    # change the timeScalar to slow time
+    sprite.unif[2] = iTIME          # iTime - shader playback time
     
     # draw the shader buffer into a PIL image
     image = Image.fromarray(pi3d.screenshot())

@@ -64,6 +64,7 @@ t.start()
 while flag is False:
   time.sleep(1.0)
 
+#========================================
 
 ## Settings ##
 BACKGROUND_COLOR = (0.0, 0.0, 0.0, 0.0)

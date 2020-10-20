@@ -1,7 +1,7 @@
-#include std_head_fs.inc
 
-#define iTime unif[1][0]
+#include std_head_fs.inc
 #define iResolution unif[0]
+#define iTime unif[0][2]
 
 // Example of https://www.shadertoy.com/view/XsXXDn
 // http://www.pouet.net/prod.php?which=57245

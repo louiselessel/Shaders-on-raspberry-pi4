@@ -1,16 +1,5 @@
 #!/usr/bin/env python
 
-# (This is an example similar to an example from the Adafruit fork
-#  to show the similarities. Most important difference currently is, that
-#  this library wants RGB mode.)
-#
-# A more complex RGBMatrix example works with the Python Imaging Library,
-# demonstrating a few graphics primitives and image loading.
-# Note that PIL graphics do not have an immediate effect on the display --
-# image is drawn into a separate buffer, which is then copied to the matrix
-# using the SetImage() function (see examples below).
-# Requires rgbmatrix.so present in the same directory.
-
 # PIL Image module (create or load images) is explained here:
 # http://effbot.org/imagingbook/image.htm
 # PIL ImageDraw module (draw shapes to images) explained here:
@@ -88,7 +77,7 @@ iDateSecondsSinceMidnight = iDate.hour*60*60 + iDate.minute*60 + iDate.second
 ## pass shadertoy uniforms into our base shader from shadertoy ##
 sprite.unif[0:2] = [W, H]       # iResolution
 sprite.unif[2] = iTIME          # iTime - shader playback time
-sprite.unif[3] = iTIMEDELTA     # iTimeDelta - render time (in seconds) ----- not implemented yet
+sprite.unif[3] = iTIMEDELTA     # iTimeDelta - render time (in seconds)
 sprite.unif[4] = SCALE          # iScale - scale for downscaling the resolution of shader
 sprite.unif[5] = iFRAME         # iFrame - shader playback frame
 sprite.unif[6:8] = [MX, MY]     # iMouse - xpos, ypos (set while button held down)
@@ -178,7 +167,7 @@ while display.loop_running():
     
     ## pass only the changed shadertoy uniforms into our base shader from shadertoy ##
     sprite.unif[2] = iTIME          # iTime - shader playback time
-    sprite.unif[3] = iTIMEDELTA     # iTimeDelta - render time (in seconds) ----- not implemented yet
+    sprite.unif[3] = iTIMEDELTA     # iTimeDelta - render time (in seconds)
     sprite.unif[5] = iFRAME         # iFrame - shader playback frame
     sprite.unif[12:15] = [YR, MTH, DAY] # iDate
     sprite.unif[15] = iDateSecondsSinceMidnight  # seconds since midnight
