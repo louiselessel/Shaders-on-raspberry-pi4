@@ -51,7 +51,7 @@ iFRAME = 0
 ## pass shadertoy uniforms into our base shader from shadertoy ##
 sprite.unif[0:2] = [W, H]       # iResolution
 sprite.unif[2] = iTIME          # iTime - shader playback time
-sprite.unif[3] = iTIMEDELTA     # iTimeDelta - render time (in seconds) ----- not implemented yet
+sprite.unif[3] = iTIMEDELTA     # iTimeDelta - render time (in seconds)
 sprite.unif[4] = SCALE          # iScale - scale for downscaling the resolution of shader
 sprite.unif[5] = iFRAME         # iFrame - shader playback frame
 sprite.unif[6:8] = [MX, MY]     # iMouse - xpos, ypos (set while button held down)
@@ -107,7 +107,7 @@ while display.loop_running():
     
     ## pass only the changed shadertoy uniforms into our base shader from shadertoy ##
     sprite.unif[2] = iTIME          # iTime - shader playback time
-    sprite.unif[3] = iTIMEDELTA     # iTimeDelta - render time (in seconds) ----- not implemented yet
+    sprite.unif[3] = iTIMEDELTA     # iTimeDelta - render time (in seconds)
     sprite.unif[5] = iFRAME         # iFrame - shader playback frame
 
     ## pass only the changed uniforms into postprocessing postsh ##

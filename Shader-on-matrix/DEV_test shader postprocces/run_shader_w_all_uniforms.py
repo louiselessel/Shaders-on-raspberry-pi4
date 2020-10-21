@@ -4,20 +4,22 @@ import pi3d
 import datetime
 
 #(W, H) = (None, None) # Fullscreen - None should fill the screen (there are unresolved edge issues)
-(W, H) = (100, 100) # Windowed
+(W, H) = (400, 400) # Windowed
 # For scale, make sure the numbers are divisible to the resolution with no remainders (use even numbers between 0 and 1). 1.0 is full non-scaled resolution.
-SCALE = 1.0 # downscale the shadertoy shader resolution
+SCALE = 0.2 # downscale the shadertoy shader resolution
 
-timeScalar = 1.0 # for scaling the speed of time
+timeScalar = 10.0 # for scaling the speed of time
 fps = 30 # framerate
 
 BACKGROUND_COLOR = (0.0, 0.0, 0.0, 0.0)
 
 
-display = pi3d.Display.create(w=W, h=H, frames_per_second=fps,
+display = pi3d.Display.create(window_title='shader',
+                              w=W, h=H, frames_per_second=fps,
                               background=BACKGROUND_COLOR,
                               display_config=pi3d.DISPLAY_CONFIG_HIDE_CURSOR | pi3d.DISPLAY_CONFIG_MAXIMIZED,
-                              use_glx=True)
+                              use_glx=True
+                              )
 
 print(display.opengl.gl_id) # the type of glsl your pi is running
 
@@ -27,9 +29,7 @@ if W is None or H is None:
 
 ## shadertoy shader stuff ##
 sprite = pi3d.Triangle(corners=((-1.0, -1.0),(-1.0, 3.0),(3.0, -1.0)))
-#shader = pi3d.Shader('fire_eye')
-shader = pi3d.Shader('test_metaball')
-#shader = pi3d.Shader('test_flame')
+shader = pi3d.Shader('cloud')
 #shader = pi3d.Shader('shadertoy01')
 sprite.set_shader(shader)
 
@@ -60,7 +60,7 @@ iDateSecondsSinceMidnight = iDate.hour*60*60 + iDate.minute*60 + iDate.second
 ## pass shadertoy uniforms into our base shader from shadertoy ##
 sprite.unif[0:2] = [W, H]       # iResolution
 sprite.unif[2] = iTIME          # iTime - shader playback time
-sprite.unif[3] = iTIMEDELTA     # iTimeDelta - render time (in seconds) ----- not implemented yet
+sprite.unif[3] = iTIMEDELTA     # iTimeDelta - render time (in seconds)
 sprite.unif[4] = SCALE          # iScale - scale for downscaling the resolution of shader
 sprite.unif[5] = iFRAME         # iFrame - shader playback frame
 sprite.unif[6:8] = [MX, MY]     # iMouse - xpos, ypos (set while button held down)
@@ -128,7 +128,7 @@ while display.loop_running():
     
     ## pass only the changed shadertoy uniforms into our base shader from shadertoy ##
     sprite.unif[2] = iTIME          # iTime - shader playback time
-    sprite.unif[3] = iTIMEDELTA     # iTimeDelta - render time (in seconds) ----- not implemented yet
+    sprite.unif[3] = iTIMEDELTA     # iTimeDelta - render time (in seconds)
     sprite.unif[5] = iFRAME         # iFrame - shader playback frame
     sprite.unif[12:15] = [YR, MTH, DAY] # iDate
     sprite.unif[15] = iDateSecondsSinceMidnight  # seconds since midnight

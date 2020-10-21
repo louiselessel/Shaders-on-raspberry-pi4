@@ -1,8 +1,14 @@
 #include std_head_fs.inc
-#define iTime unif[1][0]
 #define iResolution unif[0]
+#define iTime unif[0][2]
+#define iTimeDelta unif[1][0]
 #define iScale unif[1][1]
-#define iMouse unif[3]
+#define iFrame unif[1][2]
+#define iMouse vec4(unif[2][0], unif[2][1], unif[3][0], unif[3][1])
+#define iDate vec4(unif[4][0], unif[4][1], unif[4][2], unif[5][0])
+
+//#define ownVar1 unif[16]
+//#define ownVar2 unif[19]
 
 varying vec2 texcoordout;
 
