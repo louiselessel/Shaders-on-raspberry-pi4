@@ -7,9 +7,10 @@ Examples:
 
 - Ex_Simple runs a shader from Shadertoy at the resolution you specify. If fullscreen, the shader will be the resolution of your screen.
 - Ex_Downscale runs a shader from Shadertoy at the resolution you specify, but scaled (SCALE) down for better performance on the pi. Also if fullscreen.
-- Ex_All_Uniforms is the most involved and best template for your copy paste, it includes an implementation for all of the standard uniforms, and the scaling.
+- Ex_All_Uniforms is the most involved and best template for your copy paste, it includes an implementation for all of the standard shadertoy uniforms, AND the downscaling option. USE THIS if you want to get any shader (without video inputs) from shadertoy running.
+- Ex_Video contains a copule of examples for running video on the pi. With and without postprocessing shader effects. 
 - Other examples (eg. Pixelize) use postprocessing to render effects based on the Shadertoy shader. Here the shadertoy shader is treated as a buffer for sampling from.
-- Shader-on-matrix shows how to run the shaders on a Adafruit LED pixel matrix
+- Shader-on-matrix shows how to run the shaders and video) on a Adafruit LED pixel matrix. Please read the README in the folder to install extra dependencies.
 
 
 Here are image examples for the scaled output (scale of 1.0 is no-scaling).
@@ -51,7 +52,7 @@ Remember to credit the original creator on shadertoy!
 
 NOTE: 
 Currently only fragment shaders (.fs files) are implemented.
-iMouse uniform is implemented for screen coordinates, not window coordinated. WIP.
+iMouse uniform is implemented for screen coordinates, not window coordinates. WIP.
 
 
 Thank you to Paddy Gaunt (@paddywwoof) for excellent help and advice on implementing this.
@@ -112,7 +113,7 @@ Otherwise just open the nameOfFile.py in Thonny and click Run.
 I did not make pi3d.
 Please support the community and authors over at https://pi3d.github.io/html/ReadMe.html#acknowledgements.
 
-> pi3d is written by Tim Skillman, Paddy Gaunt, Tom Ritchford Copyright © 2012 - 2019
+> pi3d is written by Tim Skillman, Paddy Gaunt, Tom Ritchford Copyright © 2012 - 2020
 
 > Pi3d started with code based on Peter de Rivaz ‘pyopengles’ (https://github.com/peterderivaz/pyopengles) with some tweaking from Jon Macey’s code (jonmacey.blogspot.co.uk/2012/06/).
 
