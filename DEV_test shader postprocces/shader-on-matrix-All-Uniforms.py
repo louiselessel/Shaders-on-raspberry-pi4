@@ -1,17 +1,36 @@
+#!/usr/bin/env python
+
+# PIL Image module (create or load images) is explained here:
+# http://effbot.org/imagingbook/image.htm
+# PIL ImageDraw module (draw shapes to images) explained here:
+# http://effbot.org/imagingbook/imagedraw.htm
+
 import time
 import demo
 import pi3d
 import datetime
+from rgbmatrix import RGBMatrix, RGBMatrixOptions
+from PIL import Image
+from PIL import ImageDraw
 
-#(W, H) = (None, None) # Fullscreen - None should fill the screen (there are unresolved edge issues)
-(W, H) = (400, 400) # Windowed
+
+"""
+This example runs a shader on one matrix.
+Make sure you set the shader resolution (W, H) to be the resolution of your matrix,
+"""
+
+#-------------------------------------------------
+# Configuration for the shader
+
+(W, H) = (32, 32) # Windowed
 # For scale, make sure the numbers are divisible to the resolution with no remainders (use even numbers between 0 and 1). 1.0 is full non-scaled resolution.
-SCALE = 1.20 # downscale the shadertoy shader resolution
+SCALE = 1.0 # downscale the shadertoy shader resolution
 
-timeScalar = 10.0 # for scaling the speed of time
+timeScalar = 1.0 # for scaling the speed of time
 fps = 30 # framerate
 
 BACKGROUND_COLOR = (0.0, 0.0, 0.0, 0.0)
+
 
 display = pi3d.Display.create(window_title='shader',
                               w=W, h=H, frames_per_second=fps,
@@ -35,8 +54,8 @@ sprite.set_shader(shader)
 
 ## offscreen texture stuff ##
 cam = pi3d.Camera(is_3d=False)
-#postsh = pi3d.Shader('post_vanilla')
-postsh = pi3d.Shader('post_drosteffect')
+postsh = pi3d.Shader('post_vanilla')
+#postsh = pi3d.Shader('post_drosteffect')
 #postsh = pi3d.Shader('post_pixelize')
 post = pi3d.PostProcess(camera=cam, shader=postsh, scale=SCALE)
 
@@ -83,6 +102,28 @@ post.draw({0:W, 1:H, 2:iTIME, 3:iTIMEDELTA, 4:SCALE, 5:iFRAME,
 # time at start
 tm0 = time.time()
 last_time = 0
+
+
+#-------------------------------------------------
+
+# Configuration for the matrix
+options = RGBMatrixOptions()
+options.rows = H
+options.cols = W
+options.chain_length = 1
+options.parallel = 1
+options.hardware_mapping = 'adafruit-hat'  # If you have an Adafruit HAT: 'adafruit-hat', else 'regular'
+
+matrix = RGBMatrix(options = options)
+
+
+## matrix scaling ##
+(ws, hs) = (int(W*SCALE), int(H*SCALE))
+(xos, yos) = (int((W-ws)* 0.5), int((H-hs)*0.5))
+
+
+#-------------------------------------------------
+# PUT SHADER ON MATRIX
 
 while display.loop_running():
     # drawing
@@ -142,5 +183,12 @@ while display.loop_running():
     iFRAME += 1
     #print(int(FRAME/fps))    # calculate seconds based on framerate, not time.time
     
-
-
+    
+    
+    # draw the shader buffer into a PIL image
+    image = Image.fromarray(pi3d.screenshot())
+    #image = Image.fromarray(pi3d.masked_screenshot(xos, yos, ws, hs))
+    #image = Image.fromarray(pi3d.masked_screenshot(xos, yos, W, H))
+    matrix.SetImage(image,0,0)
+    
+    
