@@ -31,11 +31,15 @@ Since this code builds upon the code in the "Shaders on raspberry pi4" repo,
 you must first follow the install steps for getting the pi3d library on your pi found here:
 https://github.com/louiselessel/Shaders-on-raspberry-pi4#dependencies
 
-Then, to make sure you can use pi3d no matter where you place the matrix code from this repo, you must also download the pi3d repo folder from the link below, and place it in the pi folder (folder that also has Desktop, Documents etc in it).
-https://github.com/tipam/pi3d
+Then, to make sure you can use pi3d no matter where you place the matrix code from this repo, you must also download the pi3d repo folder from this link https://github.com/tipam/pi3d, and place it in the "pi" folder (the folder that also has "Desktop", "Documents", "Pictures" etc. in it), see the second picture.
 
 
-Place the repo here. Delete the "-master" part of the name.
+1. Unzip the folder.
+
+![Unzip the folder](https://github.com/louiselessel/Shaders-on-raspberry-pi4/blob/master/Documentation/Screenshot_unzip.png)
+
+
+2. Place the repo here. Delete the "-master" part of the name. 
 
 ![Place pi3d local repo here](https://github.com/louiselessel/Shaders-on-raspberry-pi4/blob/master/Documentation/Screenshot_PlacementOfpi3d.png)
 
