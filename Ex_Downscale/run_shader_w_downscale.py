@@ -45,6 +45,8 @@ post = pi3d.PostProcess(camera=cam, shader=flatsh, scale=SCALE)
 kbd = pi3d.Keyboard()
 
 ## pass shadertoy uniforms into our base shader from shadertoy ##
+iTIME = 0
+
 sprite.unif[0:2] = [W, H]       # iResolution
 sprite.unif[2] = iTIME          # iTime - shader playback time
 sprite.unif[4] = SCALE          # iScale - scale for downscaling the resolution of shader

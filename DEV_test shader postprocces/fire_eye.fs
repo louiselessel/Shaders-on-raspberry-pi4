@@ -17,8 +17,8 @@
  
 
  
-precision highp float;
-
+#define precision highp float;      //<------------- make sure to add #define to precision if it is not there
+//precision highp float; 
 
 
 float random (in vec2 p) { 

@@ -12,20 +12,20 @@
     //#define ownVar2 unif[19]
 	
     // Added texcoord
-    varying vec2 texcoordout;    // ---- necessary?
+    //varying vec2 texcoordout;   //-------- used for scaling?
 
  
 
  
 void main()
 {
-	float invScale = 1.0 / iScale; // obviously scale must not be zero!
-	vec2 offset = vec2(invScale - 1.0) * 0.5;
     // Customizable Parameters
-	float repeat = 8.0;			// How many times it should be repeated.
+	float repeat = 4.0;			// How many times it should be repeated.
     
     // UV in 0..1 space and also inverted UV (1..0).
-    vec2 uv = ( gl_FragCoord.xy / iResolution.xy ) * invScale - offset; // normalization of sampling coordinates - you may have to delete offset if black output. And make sure the scaling is only added to the line that looks something like: vec2 name = gl_FragCoord/iResolution
+    vec2 uv = ( gl_FragCoord.xy / iResolution.xy );
+    //vec2 uv = texcoordout;       //-------- used for scaling?
+    
     vec2 uv_inverted = 1.0 - uv;
     
     // Calculate the offset_multiplier using the current uv.
@@ -46,11 +46,12 @@ void main()
     
     // Calculate the final UV: Screen UV minus Offset, clamped to 0..1, times UV Multiplier.
     // The clamp could technically be skipped if out-of-bounds UVs are not a problem.
-    //vec2 finaluv = clamp(uv - offset, 0.0, 1.0) * uv_mul;
-    vec2 finaluv = (uv - offset) * uv_mul;
+    vec2 finaluv = clamp(uv - offset, 0.0, 1.0) * uv_mul;
+    //vec2 finaluv = (uv - offset) * uv_mul;
     
     // And now just read the texture.
 	//gl_FragColor = texture(iChannel0, finaluv);
     gl_FragColor = texture2D(tex0, finaluv);
+    //gl_FragColor = texture2D(tex0, texcoordout);          //-------- used for scaling?
     gl_FragColor.a = 1.0;
 }
