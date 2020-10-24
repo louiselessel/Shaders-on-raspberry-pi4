@@ -103,12 +103,31 @@ last_time = 0
 #-------------------------------------------------
 
 # Configuration for the matrix
+# - More info in ReadMe here https://github.com/hzeller/rpi-rgb-led-matrix
+# - https://github.com/hzeller/rpi-rgb-led-matrix/blob/master/bindings/python/rgbmatrix/core.pyx
 options = RGBMatrixOptions()
-options.rows = H
-options.cols = W
-options.chain_length = 1
+options.rows = 32
+options.cols = 32
+options.chain_length = 11
 options.parallel = 1
-options.hardware_mapping = 'adafruit-hat'  # If you have an Adafruit HAT: 'adafruit-hat', else 'regular'
+options.hardware_mapping = 'adafruit-hat'  # If you have an Adafruit HAT: 'adafruit-hat'
+options.brightness = 100
+options.pwm_bits = 11
+options.pwm_lsb_nanoseconds = 300
+#options.scan_mode = 0
+#options.multiplexing =
+#options.row_address_type =
+#options.disable_hardware_pulsing =
+options.show_refresh_rate = True
+#options.inverse_colors = 
+#options.led_rgb_sequence = 
+#options.pixel_mapper_config = 
+#options.panel_type = 
+#options.pwm_dither_bits = 
+options.limit_refresh_rate_hz = 60
+options.gpio_slowdown = 2
+#options.daemon = 
+#options.drop_privileges = 
 
 matrix = RGBMatrix(options = options)
 
