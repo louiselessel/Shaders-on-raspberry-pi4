@@ -44,6 +44,12 @@ Then, to make sure you can use pi3d no matter where you place the matrix code fr
 you must also download the pi3d repo folder from this link https://github.com/tipam/pi3d, 
 and place it in the "pi" folder (the folder that also has "Desktop", "Documents", "Pictures" etc. in it), see the second picture.
 
+### In terminal:
+
+    cd /home/pi
+    git clone https://github.com/tipam/pi3d.git 
+
+
 
 1. Unzip the folder.
 
