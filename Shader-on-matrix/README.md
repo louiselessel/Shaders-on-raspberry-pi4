@@ -77,14 +77,18 @@ So cd to the folder of the example you want to run and then run the sudo command
 
 ### In terminal:
 To run the simple example:
+```
     cd /home/pi/Desktop/Shader-on-matrix/
     cd Ex_shader-on-matrix_simple
     sudo python3 ./shader-on-matrix-simple.py 
+```
     
 To run the All Uniforms example:
+```
     cd /home/pi/Desktop/Shader-on-matrix/
     cd Ex_shader-on-matrix_All-Uniforms/
     sudo python3 ./shader-on-matrix-All-Uniforms.py
+```
 
 
 You may have to experiment with different values for matrix settings inside the .py file.
@@ -99,11 +103,13 @@ NOTICE: These settings will only work if you installed hzellers library directly
 If you installaed from adafruits guide, the settings will not all work!
 
 
+```
 #-------------------------------------------------
 
 # Configuration for the matrix
 # - More info in ReadMe here https://github.com/hzeller/rpi-rgb-led-matrix
 # - https://github.com/hzeller/rpi-rgb-led-matrix/blob/master/bindings/python/rgbmatrix/core.pyx
+
 options = RGBMatrixOptions()
 options.rows = 32
 options.cols = 32
@@ -130,7 +136,7 @@ options.drop_privileges = True
 
 matrix = RGBMatrix(options = options)
 #-------------------------------------------------
-
+```
 
 
 
