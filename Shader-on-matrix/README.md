@@ -4,7 +4,7 @@
 Based on:
 https://github.com/hzeller/rpi-rgb-led-matrix/tree/master/bindings/python
 
-Tested on the raspberry pi 4. Using an Adafruit RGB Matrix HAT + RTC, Adafruit Bonnet and a few Hzellers recommended boards here https://github.com/hzeller/rpi-rgb-led-matrix/tree/master/adapter
+Tested on the raspberry pi 4. Using an Adafruit RGB Matrix HAT + RTC, Adafruit Bonnet and a few of Hzellers recommended boards here https://github.com/hzeller/rpi-rgb-led-matrix/tree/master/adapter. I am currently using the board from electrodragon.
 
 
 
@@ -25,7 +25,7 @@ The only difference is that it gets a newer verion of Hzeller's code.
     sudo bash rgb-matrix.sh
 
 
-My pi is set up for the "Adafruit Bonnet" and for "quality" (1,1). I've found that to be more stable.
+My pi is set up for the "Adafruit Bonnet" and for "quality" (1,1). Using the board from electrodragon. I've found that to be more stable.
 
 After installation, the hzeller repo has included python examples in the folder: bindings/python/samples
 The code in this repo is based on these.
