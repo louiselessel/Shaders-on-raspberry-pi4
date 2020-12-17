@@ -55,7 +55,8 @@ Currently only fragment shaders (.fs files) are implemented.
 iMouse uniform is implemented for screen coordinates, not window coordinates. WIP.
 
 
-Thank you to Paddy Gaunt (@paddywwoof) for excellent help and advice on implementing this.
+Thank you to Paddy Gaunt (@paddywwoof) from pi3d for excellent help and advice on implementing this.
+This repo could not have been made without the help of him.
 
 
 ## Dependencies
@@ -72,7 +73,9 @@ The following steps are based on https://pi3d.github.io/html/ReadMe.html#setup-o
 
 	$ sudo raspi-config
 
-Then set gpu_mem=128 under -> advanced options -> memory split
+Then set gpu_mem=128 
+This will either be under -> advanced options -> memory split.
+or under -> performance options -> GPU Memory ->  memory split.
 
 The last line is to increase the GPU memory, this is default set to 64.
 You want to set it higher, to 128.
