@@ -4,8 +4,7 @@
 Based on:
 https://github.com/hzeller/rpi-rgb-led-matrix/tree/master/bindings/python
 
-Tested on the raspberry pi 4. Using an Adafruit RGB Matrix HAT + RTC for Raspberry Pi
-(https://www.adafruit.com/product/2345)
+Tested on the raspberry pi 4. Using an Adafruit RGB Matrix HAT + RTC, Adafruit Bonnet and a few Hzellers recommended boards here https://github.com/hzeller/rpi-rgb-led-matrix/tree/master/adapter
 
 
 
