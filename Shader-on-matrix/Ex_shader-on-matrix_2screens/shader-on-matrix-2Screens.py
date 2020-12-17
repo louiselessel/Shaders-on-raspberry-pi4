@@ -18,6 +18,7 @@ from PIL import ImageDraw
 This example runs a shader across multiple matrixes. The example is set up for 2.
 Make sure you set the shader resolution (W, H) you want, 
 and set the amount of matrixes you are using in options.chain_length = 2 further down.
+Also make sure options.rows = 32 and options.cols = 32 are correct with your screens.
 This Example is furhter developed from All_uniforms Example.
 """
 
@@ -105,19 +106,33 @@ last_time = 0
 #-------------------------------------------------
 
 # Configuration for the matrix
+# - More info in ReadMe here https://github.com/hzeller/rpi-rgb-led-matrix
+# - https://github.com/hzeller/rpi-rgb-led-matrix/blob/master/bindings/python/rgbmatrix/core.pyx
 options = RGBMatrixOptions()
 options.rows = 32
 options.cols = 32
 options.chain_length = 2
 options.parallel = 1
-options.hardware_mapping = 'adafruit-hat'  # If you have an Adafruit HAT: 'adafruit-hat', else 'regular'
+options.hardware_mapping = 'regular'  # If you have an Adafruit HAT: 'adafruit-hat'
+options.brightness = 50
+#options.pwm_bits = 11    #default 11
+options.pwm_lsb_nanoseconds = 200 #200
+#options.scan_mode = 0    #default 0
+#options.multiplexing = 0   #default 0, <1..17>
+#options.row_address_type = 0   #default 0, <0..4>
+#options.disable_hardware_pulsing = False   # debugging if nothing on panel - sound setting
+options.show_refresh_rate = True
+#options.inverse_colors = False
+#options.led_rgb_sequence = "RGB"
+#options.pixel_mapper_config = 
+#options.panel_type = "FM6126A"   #Current supported types: FM6126A or FM6127
+#options.pwm_dither_bits = 0    #default 0
+options.limit_refresh_rate_hz = 200
+options.gpio_slowdown = 4
+#options.daemon = False    #  if it looks weird, reboot
+options.drop_privileges = True
 
 matrix = RGBMatrix(options = options)
-
-
-## matrix scaling ##
-(ws, hs) = (int(W*SCALE), int(H*SCALE))
-(xos, yos) = (int((W-ws)* 0.5), int((H-hs)*0.5))
 
 
 #-------------------------------------------------

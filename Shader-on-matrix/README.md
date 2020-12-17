@@ -13,12 +13,22 @@ Tested on the raspberry pi 4. Using an Adafruit RGB Matrix HAT + RTC for Raspber
 
 ## Dependencies:
 
-Follow this installation guide for the RGB Matrix
+The installation guide for the RGB Matrix on Adafruit is outdated compared to Hzeller's repo.
+(you can't use most of the matrix settings such as GPIO slowdown).
+So don't use this: https://learn.adafruit.com/adafruit-rgb-matrix-bonnet-for-raspberry-pi/driving-matrices
 
-https://learn.adafruit.com/adafruit-rgb-matrix-bonnet-for-raspberry-pi/driving-matrices
+I've re-written it in the file "rgb-matrix.sh" included with this repo, until further notice.
+The only difference is that it gets a newer verion of Hzeller's code. 
 
-My pi is set up for the "Adafruit HAT" and for "convenience".
-After installation, this library has included python examples in the folder: bindings/python/samples
+
+### In terminal:
+    cd /home/pi/Desktop/Shaders-on-raspberry-pi4/Shader-on-matrix
+    sudo bash rgb-matrix.sh
+
+
+My pi is set up for the "Adafruit Bonnet" and for "quality" (1,1). I've found that to be more stable.
+
+After installation, the hzeller repo has included python examples in the folder: bindings/python/samples
 The code in this repo is based on these.
 
 
@@ -31,7 +41,9 @@ Since this code builds upon the code in the "Shaders on raspberry pi4" repo,
 you must first follow the install steps for getting the pi3d library on your pi found here:
 https://github.com/louiselessel/Shaders-on-raspberry-pi4#dependencies
 
-Then, to make sure you can use pi3d no matter where you place the matrix code from this repo, you must also download the pi3d repo folder from this link https://github.com/tipam/pi3d, and place it in the "pi" folder (the folder that also has "Desktop", "Documents", "Pictures" etc. in it), see the second picture.
+Then, to make sure you can use pi3d no matter where you place the matrix code from this repo on your pi,
+you must also download the pi3d repo folder from this link https://github.com/tipam/pi3d, 
+and place it in the "pi" folder (the folder that also has "Desktop", "Documents", "Pictures" etc. in it), see the second picture.
 
 
 1. Unzip the folder.
@@ -45,50 +57,84 @@ Then, to make sure you can use pi3d no matter where you place the matrix code fr
 
 
 
-### 2. Then, install the imaging library called PIL
+### 2. Then, make sure to install the imaging library called PIL
+It should already be installed if you have the full Raspbian OS on your pi.
 
 ### In terminal:
 
-    $ sudo apt-get update && sudo apt-get install python3-dev python3-pillow -y
-    $ make build-python PYTHON=$(which python3)
-    $ sudo make install-python PYTHON=$(which python3)
+    sudo apt-get update && sudo apt-get install python3-dev python3-pillow -y
+    make build-python PYTHON=$(which python3)
+    sudo make install-python PYTHON=$(which python3)
 
 
 ----
 
 ## How to
 
-You can test the code in Thonny by pressing Run, but to take advantage of the settings for the matrix, the code must be run from terminal. So cd to the folder of this repo and then run the sudo command below.
-
+You can test the code in Thonny by pressing Run, but to take advantage of the settings for the matrix, the code must be run from terminal. 
+So cd to the folder of the example you want to run and then run the sudo command below.
 
 
 ### In terminal:
 To run the simple example:
-    $ cd /home/pi/Desktop/Shader-on-matrix/
-    $ cd Ex_shader-on-matrix_simple
-    $ sudo python3 ./shader-on-matrix-simple.py --led-gpio-mapping=adafruit-hat --led-gpio-slowdown=7
-
+    cd /home/pi/Desktop/Shader-on-matrix/
+    cd Ex_shader-on-matrix_simple
+    sudo python3 ./shader-on-matrix-simple.py 
+    
 To run the All Uniforms example:
-    $ cd /home/pi/Desktop/Shader-on-matrix/
-    $ cd Ex_shader-on-matrix_All-Uniforms/
-    $ sudo python3 ./shader-on-matrix-All-Uniforms.py --led-gpio-mapping=adafruit-hat --led-gpio-slowdown=7
+    cd /home/pi/Desktop/Shader-on-matrix/
+    cd Ex_shader-on-matrix_All-Uniforms/
+    sudo python3 ./shader-on-matrix-All-Uniforms.py
 
 
-
-You may have to experiment with different values for the slowdown
---led-slowdown-gpio=(0…n)
-
-This is sometimes needed to throttle back the speed when using a fast Pi. Default is 1.
-For Raspberry Pi 3 use a slowdown of 1 to start (use higher values if image still flickers). For Raspberry Pi 4, use a slowdown of 4 (Though I found 7 is sometimes good). Older Pi models might work with 0, try it.
-
-More info here https://learn.adafruit.com/adafruit-rgb-matrix-bonnet-for-raspberry-pi/driving-matrices.
-
+You may have to experiment with different values for matrix settings inside the .py file.
+For instance it is sometimes needed to throttle back the speed (options.gpio_slowdown) when using a fast Pi. Default is 1.
+For Raspberry Pi 3 use a slowdown of 1 to start (use higher values if image still flickers).
+For Raspberry Pi 4, use a slowdown of 4 or 2. Try what works best for your display.
 
 There are tons more settings and tweaking mentioned in the README here:
 https://github.com/hzeller/rpi-rgb-led-matrix/
+
+NOTICE: These settings will only work if you installed hzellers library directly or through the rgb-matrix.sh file I included with this repo.
+If you installaed from adafruits guide, the settings will not all work!
+
+
+#-------------------------------------------------
+
+# Configuration for the matrix
+# - More info in ReadMe here https://github.com/hzeller/rpi-rgb-led-matrix
+# - https://github.com/hzeller/rpi-rgb-led-matrix/blob/master/bindings/python/rgbmatrix/core.pyx
+options = RGBMatrixOptions()
+options.rows = 32
+options.cols = 32
+options.chain_length = 1
+options.parallel = 1
+options.hardware_mapping = 'regular'  # If you have an Adafruit HAT: 'adafruit-hat'
+options.brightness = 50
+#options.pwm_bits = 11    #default 11
+options.pwm_lsb_nanoseconds = 200 #200
+#options.scan_mode = 0    #default 0
+#options.multiplexing = 0   #default 0, <1..17>
+#options.row_address_type = 0   #default 0, <0..4>
+#options.disable_hardware_pulsing = False   # debugging if nothing on panel - sound setting
+options.show_refresh_rate = True
+#options.inverse_colors = False
+#options.led_rgb_sequence = "RGB"
+#options.pixel_mapper_config = 
+#options.panel_type = "FM6126A"   #Current supported types: FM6126A or FM6127
+#options.pwm_dither_bits = 0    #default 0
+options.limit_refresh_rate_hz = 200
+options.gpio_slowdown = 4
+#options.daemon = False    #  if it looks weird, reboot
+options.drop_privileges = True
+
+matrix = RGBMatrix(options = options)
+#-------------------------------------------------
+
+
 
 
 
 To stop the code from running, in terminal:
 
-    $ Ctrl + C
+    Ctrl + C

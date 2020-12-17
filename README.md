@@ -78,6 +78,7 @@ The last line is to increase the GPU memory, this is default set to 64.
 You want to set it higher, to 128.
 
 
+
 -------------
 ## ABOUT pi3d
 
