@@ -1,0 +1,69 @@
+title:ShaderToy ES3.0 for Pi4
+fullscreen:false
+screenWidth:640	
+screenHeight:480
+
+tex1:Textures/rocks.png
+tex2:Textures/organic.png
+tex3:Textures/stars.png
+tex4:Textures/noise.png
+
+#tests performed on 640x480 RPi4 (no overclocking)
+
+shader:Shaders/cheapTunnel.fs
+
+
+
+#8fps		shader:Shaders/Bubbles.fs
+#2.3fps 	shader:Shaders/Hell.fs
+#1.1fps 	shader:Shaders/Flames.fs
+#5fps 		shader:Shaders/Mandelbrot.fs
+#60fps 		shader:Shaders/SquareTunnel.fs
+#60fps 		shader:Shaders/CirclePattern.fs
+#8.5fps		shader:Shaders/RadialBlur.fs
+#15fps		shader:Shaders/Iterations.fs
+#60fps 		shader:Shaders/SimplexNoise.fs
+#60fps 		shader:Shaders/FractalTilings.fs
+#2.5fps 	shader:Shaders/Tentacles.fs
+#2.6fps 	shader:Shaders/TwistedColumns.fs
+#4.5fps 	shader:Shaders/JuliaDistance.fs
+#2.4fps 	shader:Shaders/Tissue.fs
+#16fps		shader:Shaders/Planet.fs
+#60fps 		shader:Shaders/Plasma.fs
+#60fps ?? 	shader:Shaders/Rippley.fs
+#60fps 		shader:Shaders/WaterCaustic.fs
+#1fps ??	shader:Shaders/LakeDrops.fs
+#25fps 		shader:Shaders/SimpleWater.fs
+#60fps 		shader:Shaders/TileWater.fs
+#60fps ??	shader:Shaders/ShallowRiver.fs
+#17fps ??	shader:Shaders/CheapWater.fs
+#22fps 		shader:Shaders/FlowingWater.fs
+#4.4fps		shader:Shaders/RandomPipe.fs
+#60fps		shader:Shaders/Silexars.fs
+# crashes	shader:Shaders/ThreeBody.fs
+#4.9fps		shader:Shaders/FastOcean.fs
+#			shader:Shaders/RayMarchPt1.fs
+#33fps		shader:Shaders/RayMarchPt2.fs
+#42fps		shader:Shaders/RayMarchPt3.fs
+# ??		shader:Shaders/InfiniteColors.fs
+# ??		shader:Shaders/DriveHome.fs
+#2.94fps	shader:Shaders/MrLegoBoy.fs
+#60fps		shader:Shaders/OblivionRadar.fs
+# ??		shader:Shaders/PlanetToy.fs
+#13.5fps	shader:Shaders/Warping2.fs
+#3.38fps	shader:Shaders/FractalLand.fs
+#42fps		shader:Shaders/Pirates.fs
+#13.3fps	shader:Shaders/VoronoiDistances.fs noise.png
+#11.5fps	shader:Shaders/SequenceStar.fs
+# ??		shader:Shaders/Filtering.fs
+#2.9fps		shader:Shaders/Star.fs
+#6.2fps		shader:Shaders/Cloud2D.fs
+#16.8fps	shader:Shaders/SimpleGalaxy.fs
+#1.6fps		shader:Shaders/CloudTen.fs
+#60fps		shader:Shaders/Heart2d.fs
+#1.8fps		shader:Shaders/VolumetricLines.fs
+#2.95fps	shader:Shaders/Sky001.fs
+#60fps		shader:Shaders/Hexagons.fs noise.png
+#60fps		shader:Shaders/RTsphere.fs
+#2.8fps		shader:Shaders/Atmosphere.fs
+#21fps		shader:Shaders/BallofFire.fs
