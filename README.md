@@ -80,7 +80,10 @@ or under -> performance options -> GPU Memory ->  memory split.
 The last line is to increase the GPU memory, this is default set to 64.
 You want to set it higher, to 128.
 
+Make sure the file called "demo.py" is in the folder of each shader you want to run, and that it contains the following path (or else the code won't run):
 
+	import sys
+	sys.path.insert(1, '/home/pi/pi3d/src/')
 
 -------------
 ## ABOUT pi3d
