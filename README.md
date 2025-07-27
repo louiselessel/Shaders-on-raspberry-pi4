@@ -3,6 +3,8 @@
 This repo allows you to run shaders on a Raspberry pi 4, using the pi3d library. 
 It enables you to use code from https://www.shadertoy.com/ and try it on the pi4.
 
+Last updated 2025-07-27
+
 Examples:
 
 - Ex_Simple runs a shader from Shadertoy at the resolution you specify. If fullscreen, the shader will be the resolution of your screen.
